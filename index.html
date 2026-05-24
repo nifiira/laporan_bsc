@@ -826,7 +826,7 @@
         <!-- Point A -->
         <details>
           <summary>
-            A. Kecukupan Sumber Daya Manusia
+            A. Pertumbuhan Kunjungan Rawat Jalan
             <span class="score-badge"
               >Sub-Total: <span id="subTotalA">0.00</span></span
             >
@@ -835,12 +835,12 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Kecukupan Sumber Daya Manusia</div>
+                <div class="q-title">Pertumbuhan Kunjungan Rawat Jalan</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Jenis dan Jumlah SDM yang ada sesuai ketentuan PP 47 th
-                      2021 :</label
+                      >Rata-rata kunjungan rawat jalan per hari pada satu
+                      periode :</label
                     >
                     <input
                       type="number"
@@ -852,8 +852,8 @@
                   </div>
                   <div class="formula-row">
                     <label
-                      >Jenis dan Jumlah SDM yang ada sesuai ketentuan PP 47 thn
-                      2021 yang memenuhi ABK :</label
+                      >Rata-rata kunjungan rawat jalan per hari pada satu
+                      periode yang sama di tahun lalu :</label
                     >
                     <input
                       type="number"
@@ -873,7 +873,7 @@
         <!-- Point B -->
         <details>
           <summary>
-            B. Rata-rata Jam Pelatihan Pegawai BLUD
+            B. Pertumbuhan rata-rata kunjungan Gawat Darurat
             <span class="score-badge"
               >Sub-Total: <span id="subTotalB">0.00</span></span
             >
@@ -882,10 +882,15 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Rata-rata Jam Pelatihan Pegawai BLUD</div>
+                <div class="q-title">
+                  Pertumbuhan rata-rata kunjungan Gawat Darurat
+                </div>
                 <div class="formula-box">
                   <div class="formula-row">
-                    <label>Total realisasi jam pelatihan pegawai :</label>
+                    <label
+                      >Rata-rata kunjungan gawat darurat per hari pada satu
+                      periode :</label
+                    >
                     <input
                       type="number"
                       class="val-realisasi"
@@ -895,7 +900,10 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>Jumlah pegawai x 20 jam :</label>
+                    <label
+                      >Rata-rata kunjungan gawat darurat per hari pada satu
+                      periode yang sama di tahun lalu :</label
+                    >
                     <input
                       type="number"
                       class="val-target"
@@ -914,7 +922,7 @@
         <!-- Point C -->
         <details>
           <summary>
-            C. Pelatihan 20 Jam per Pegawai
+            C. Pertumbuhan Kunjungan Rawat Inap
             <span class="score-badge"
               >Sub-Total: <span id="subTotalC">0.00</span></span
             >
@@ -923,11 +931,11 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Pelatihan 20 Jam per Pegawai</div>
+                <div class="q-title">Pertumbuhan Kunjungan Rawat Inap</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Jumlah pegawai yang mendapat pelatihan minimal 20 jam
+                      >Jumlah hari perawatan rawat inap pada satu periode
                       :</label
                     >
                     <input
@@ -940,8 +948,8 @@
                   </div>
                   <div class="formula-row">
                     <label
-                      >Jumlah seluruh pegawai di BLUD Rumah Sakit Daerah
-                      :</label
+                      >Jumlah hari perawatan rawat inap pada satu periode yang
+                      sama di tahun lalu :</label
                     >
                     <input
                       type="number"
@@ -961,7 +969,7 @@
         <!-- Point D -->
         <details>
           <summary>
-            D. Petugas Layanan Gawat Darurat Bersetifikat (PGD)
+            D. Pertumbuhan Pemeriksaan Radiologi
             <span class="score-badge"
               >Sub-Total: <span id="subTotalD">0.00</span></span
             >
@@ -970,14 +978,12 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">
-                  Petugas Layanan Gawat Darurat Bersetifikat (PGD)
-                </div>
+                <div class="q-title">Pertumbuhan Pemeriksaan Radiologi</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Total Petugas Layanan Gawat Darurat yang bersertifikat
-                      :</label
+                      >Rata-rata pemeriksaan radiologi per hari pada satu
+                      periode :</label
                     >
                     <input
                       type="number"
@@ -988,7 +994,10 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>Total petugas Layanan Gawat Darurat :</label>
+                    <label
+                      >rata-rata pemeriksaan radiologi per hari pada satu
+                      periode yang sama di tahun lalu :</label
+                    >
                     <input
                       type="number"
                       class="val-target"
@@ -1007,30 +1016,46 @@
         <!-- Point E -->
         <details>
           <summary>
-            E. Program Reward and Punishment
+            E. Pertumbuhan Pemeriksaan Laboratorium
             <span class="score-badge"
               >Sub-Total: <span id="subTotalE">0.00</span></span
             >
           </summary>
           <ul class="question-list" id="groupE">
-            <li class="question-item">
+            <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Program Reward and Punishment</div>
-                <select onchange="hitungGrupE()">
-                  <option value="1">
-                    1. Tidak ada program reward and punishment
-                  </option>
-                  <option value="0">2. Ada program tidak dilaksanakan</option>
-                  <option value="0">
-                    3. Ada program sebagian dilaksanakan
-                  </option>
-                  <option value="0">
-                    4. Ada program dilaksanakan sepenuhnya
-                  </option>
-                </select>
+                <div class="q-title">Pertumbuhan Pemeriksaan Laboratorium</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah pemeriksanaan laboratorium selama satu periode
+                      :</label
+                    >
+                    <input
+                      type="number"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupE()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label
+                      >jumlah pemeriksanaan laboratorium selama satu periode
+                      yang sama :</label
+                    >
+                    <input
+                      type="number"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupE()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
               </div>
-              <div class="q-score" style="color: #94a3b8">-</div>
+              <div class="q-score">0</div>
             </li>
           </ul>
         </details>
@@ -1038,7 +1063,7 @@
         <!-- Point F -->
         <details>
           <summary>
-            F. Presentase Dokter Pendidik Klinis yang Mendapat TOT
+            F. Pertumbuhan Operasi
             <span class="score-badge"
               >Sub-Total: <span id="subTotalF">0.00</span></span
             >
@@ -1047,14 +1072,11 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">
-                  Presentase Dokter Pendidik Klinis yang Mendapat TOT
-                </div>
+                <div class="q-title">Pertumbuhan Operasi</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Jumlah dokter pendidik klinis yang mendapatkan TOT
-                      :</label
+                      >Rata-rata operasi per hari pada satu periode :</label
                     >
                     <input
                       type="number"
@@ -1065,7 +1087,10 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>Jumlah seluruh dokter pendidik klinis :</label>
+                    <label
+                      >rata-rata operasi per hari pada satu periode yang sama di
+                      tahun lalu :</label
+                    >
                     <input
                       type="number"
                       class="val-target"
@@ -1084,7 +1109,7 @@
         <!-- Point G -->
         <details>
           <summary>
-            G. Kecukupan Sarana Medis
+            G. Pertumbuhan Rehab Medik
             <span class="score-badge"
               >Sub-Total: <span id="subTotalG">0.00</span></span
             >
@@ -1093,12 +1118,11 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Kecukupan Sarana Medis</div>
+                <div class="q-title">Pertumbuhan Rehab Medik</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Jenis dan Jumlah sarana medis yang disediakan RSD
-                      :</label
+                      >Rata-rata rehab medis per hari pada satu periode :</label
                     >
                     <input
                       type="number"
@@ -1110,8 +1134,8 @@
                   </div>
                   <div class="formula-row">
                     <label
-                      >Jenis dan Jumlah sarana medis sesuai Standar yang
-                      ditetapkan oleh Permenkes Nomor 40 Tahun 2022 :</label
+                      >rata-rata rehab medis per hari pada satu periode di tahun
+                      lalu :</label
                     >
                     <input
                       type="number"
@@ -1131,7 +1155,7 @@
         <!-- Point H -->
         <details>
           <summary>
-            H. Pelayanan pemeliharaan sarana rumah sakit
+            H. Pertumbuhan Peserta Didik Pendidikan Kedokteran
             <span class="score-badge"
               >Sub-Total: <span id="subTotalH">0.00</span></span
             >
@@ -1141,13 +1165,13 @@
               <div class="q-number">1</div>
               <div class="q-content">
                 <div class="q-title">
-                  Kecepatan Waktu menanggapi kerusakan alat
+                  Pertumbuhan Peserta Didik Pendidikan Kedokteran
                 </div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Jumlah laporan kerusakan alat yang ditangani < 15 menit
-                      :</label
+                      >Jumlah peserta didik pendidikan kedokteran pada satu
+                      periode :</label
                     >
                     <input
                       type="number"
@@ -1158,7 +1182,10 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>Jumlah Seluruh Laporan Kerusakan alat :</label>
+                    <label
+                      >jumlah peserta didik pendidikan kedokteran pada satu
+                      periode yang sama di tahun lalu :</label
+                    >
                     <input
                       type="number"
                       class="val-target"
@@ -1250,7 +1277,7 @@
         <!-- Point I -->
         <details>
           <summary>
-            I. Pengembangan SIM RSD
+            I. Pertumbuhan Penelitian yang dipublikasikan
             <span class="score-badge"
               >Sub-Total: <span id="subTotalI">0.00</span></span
             >
@@ -1259,10 +1286,15 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Pengembangan SIM RSD</div>
+                <div class="q-title">
+                  Pertumbuhan Penelitian yang dipublikasikan
+                </div>
                 <div class="formula-box">
                   <div class="formula-row">
-                    <label>Jumlah modul yang disediakan RSD :</label>
+                    <label
+                      >Jumlah penelitian yang dipublikasikan pada satu periode
+                      :</label
+                    >
                     <input
                       type="number"
                       class="val-realisasi"
@@ -1272,7 +1304,10 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>22 Modul :</label>
+                    <label
+                      >jumlah penelitian yang dipublikasikan pada satu periode
+                      yang sama di tahun lalu :</label
+                    >
                     <input
                       type="number"
                       class="val-target"
@@ -1284,6 +1319,431 @@
                 </div>
               </div>
               <div class="q-score">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point 2.1.2 -->
+        <div class="h-row lvl-3" style="margin-top: 10px">
+          <div class="h-num">2.1.1</div>
+          <div class="h-text">Sub Aspek Pertumbuhan Produktivitas</div>
+        </div>
+
+        <!-- Point A -->
+        <details>
+          <summary>
+            A. Kelengkapan Rekam Medik 24 Jam Selesai Pelayanan
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalA">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupA">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">
+                  Kelengkapan Rekam Medik 24 Jam Selesai Pelayanan
+                </div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label>Jumlah rekam medik lengkap yang disurvey :</label>
+                    <input
+                      type="number"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupA()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label>Jumlah semua rekam medik yang disurvey :</label>
+                    <input
+                      type="number"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupA()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point B -->
+        <details>
+          <summary>
+            B. Pengembalian Rekam Medik
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalB">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupB">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">Pengembalian Rekam Medik</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah rekam medik yang dikembalikan ≤ 24 jam setelah
+                      pasien pulang :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_b1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupB()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label>Jumlah semua rekam medik :</label>
+                    <input
+                      type="number"
+                      id="input_b1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupB()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_B1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point C -->
+        <details>
+          <summary>
+            C. Angka Pembatalan Operasi
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalC">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupC">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">Angka Pembatalan Operasi</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label>Jumlah pembatalan operasi elektif :</label>
+                    <input
+                      type="number"
+                      id="input_c1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupC()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label
+                      >Jumlah tindakan operasi yang telah terjadwal :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_c1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupC()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_C1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point D -->
+        <details>
+          <summary>
+            D. Angka Kegagalan Hasil Radiologi
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalD">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupD">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">Angka Kegagalan Hasil Radiologi</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label>Jumlah kegagalan hasil radiologi :</label>
+                    <input
+                      type="number"
+                      id="input_d1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupD()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label>Jumlah pemeriksaan radiologi :</label>
+                    <input
+                      type="number"
+                      id="input_d1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupD()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_D1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point E -->
+        <details>
+          <summary>
+            E. Penulisan Resep Sesuai Formularium/Kepatuhan Penggunaan
+            Formularium Nasional
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalE">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupE">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">
+                  Penulisan Resep Sesuai Formularium/Kepatuhan Penggunaan
+                  Formularium Nasional
+                </div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah Resep dalam lembar resep yang sesuai dengan
+                      formularium nasional :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_e1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupE()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label
+                      >Jumlah Resep dalam lembar resep yang diobservasi :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_e1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupE()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_E1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point F -->
+        <details>
+          <summary>
+            F. Angka Pengulangan Pemeriksaan Laboratorium
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalF">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupF">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">
+                  Angka Pengulangan Pemeriksaan Laboratorium
+                </div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah pemeriksaan ulang di lab patologi klinik :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_f1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupF()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label>Jumlah seluruh pemeriksaan laboratorium :</label>
+                    <input
+                      type="number"
+                      id="input_f1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupF()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_F1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point G -->
+        <details>
+          <summary>
+            G. Bed Occupancy Rate (BOR)
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalG">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupG">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">Bed Occupancy Rate (BOR)</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label>Jumlah hari perawatan :</label>
+                    <input
+                      type="number"
+                      id="input_g1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupG()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label>Jumlah hari x jumlah tempat tidur :</label>
+                    <input
+                      type="number"
+                      id="input_g1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupG()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_G1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point H -->
+        <details>
+          <summary>
+            H. Waktu Tunggu Hasil Lab Kritis/Pelaporan Hasil Kritis
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalH">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupH">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">
+                  Waktu Tunggu Hasil Laboratorium Kritis/Pelaporan Hasil Kritis
+                  Laboratorium
+                </div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah hasil kritis laboratorium yang dilaporkan ≤ 30
+                      menit :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_h1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupH()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label
+                      >Jumlah seluruh hasil kritis laboratorium yang diobservasi
+                      :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_h1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupH()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_H1">0</div>
+            </li>
+          </ul>
+        </details>
+
+        <!-- Point I -->
+        <details>
+          <summary>
+            I. Waktu Tunggu di Rawat Jalan
+            <span class="score-badge"
+              >Sub-Total: <span id="subTotalI">0.00</span></span
+            >
+          </summary>
+          <ul class="question-list" id="groupI">
+            <li class="question-item formula-type">
+              <div class="q-number">1</div>
+              <div class="q-content">
+                <div class="q-title">Waktu Tunggu di Rawat Jalan</div>
+                <div class="formula-box">
+                  <div class="formula-row">
+                    <label
+                      >Jumlah kumulatif waktu tunggu pasien rawat jalan yang
+                      disurvey :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_i1_real"
+                      class="val-realisasi"
+                      min="0"
+                      oninput="hitungGrupI()"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="formula-row">
+                    <label
+                      >Jumlah seluruh pasien rawat jalan yang disurvey :</label
+                    >
+                    <input
+                      type="number"
+                      id="input_i1_target"
+                      class="val-target"
+                      min="0"
+                      oninput="hitungGrupI()"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="q-score" id="score_I1">0</div>
             </li>
           </ul>
         </details>
@@ -1291,96 +1751,25 @@
         <!-- Point J -->
         <details>
           <summary>
-            J. Pelayanan administrasi manajemen
+            J. Waktu Tanggap Darurat di IGD
             <span class="score-badge"
               >Sub-Total: <span id="subTotalJ">0.00</span></span
             >
           </summary>
           <ul class="question-list" id="groupJ">
-            <!-- J1 -->
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">
-                  Tindak lanjut penyelesaian hasil pertemuan direksi
-                </div>
+                <div class="q-title">Waktu Tanggap Darurat di IGD</div>
                 <div class="formula-box">
                   <div class="formula-row">
                     <label
-                      >Hasil keputusan direksi yang ditindaklanjuti :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label
-                      >Total hasil keputusan direksi yang harus ditindaklanjuti
+                      >Jumlah pasien IGD yang mendapat pelayanan ≤ 5 menit
                       :</label
                     >
                     <input
                       type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J2 -->
-            <li class="question-item formula-type">
-              <div class="q-number">2</div>
-              <div class="q-content">
-                <div class="q-title">Kelengkapan laporan kinerja BLUD</div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label>Jumlah laporan kinerja lengkap :</label>
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label>Jumlah laporanyang seharusnya disusun :</label>
-                    <input
-                      type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J3 -->
-            <li class="question-item formula-type">
-              <div class="q-number">3</div>
-              <div class="q-content">
-                <div class="q-title">
-                  Ketepatan waktu pengusulan kenaikan pangkat
-                </div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label
-                      >Jumah Pegawai yg diusulkan tepat waktu sesuai periode
-                      kenaikan pangkat :</label
-                    >
-                    <input
-                      type="number"
+                      id="input_j1_real"
                       class="val-realisasi"
                       min="0"
                       oninput="hitungGrupJ()"
@@ -1389,86 +1778,12 @@
                   </div>
                   <div class="formula-row">
                     <label
-                      >Jumah Seluruh Pegawai yg seharusnya diusulkan kenaikan
-                      pangkat :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J4 -->
-            <li class="question-item formula-type">
-              <div class="q-number">4</div>
-              <div class="q-content">
-                <div class="q-title">
-                  Ketepatan waktu pengurusan gaji berkala
-                </div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label
-                      >Jumlah pegawai yg pengurusan kenaikan gaji berkalanya
-                      tepat waktu :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label
-                      >Jumlah seluruh pegawai yg harus dilakukan pengurusan
-                      kenaikan gaji berkalanya :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J5 -->
-            <li class="question-item formula-type">
-              <div class="q-number">5</div>
-              <div class="q-content">
-                <div class="q-title">
-                  Ketepatan waktu penyusunan laporan keuangan
-                </div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label>Jumlah laporan keuangan yg diselesaikan :</label>
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label
-                      >Jumlah laporan keuangan yg seharusnya diselesaikan
+                      >Jumlah seluruh pasien IGD yang mendapat pelayanan
                       :</label
                     >
                     <input
                       type="number"
+                      id="input_j1_target"
                       class="val-target"
                       min="0"
                       oninput="hitungGrupJ()"
@@ -1477,81 +1792,7 @@
                   </div>
                 </div>
               </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J6 -->
-            <li class="question-item formula-type">
-              <div class="q-number">6</div>
-              <div class="q-content">
-                <div class="q-title">
-                  Ketepatan waktu pemberian informasi tagihan pasien rawat inap
-                  (jam).
-                </div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label
-                      >Jumlah kumulatif waktu pemberian informasi tagihan pasien
-                      rawat inap :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label>Jumlah pasien rawat inap :</label>
-                    <input
-                      type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
-            </li>
-
-            <!-- J7 -->
-            <li class="question-item formula-type">
-              <div class="q-number">7</div>
-              <div class="q-content">
-                <div class="q-title">
-                  Ketepatan waktu pemberian imbalan (insentif) sesuai
-                  kesepakatan waktu
-                </div>
-                <div class="formula-box">
-                  <div class="formula-row">
-                    <label
-                      >Waktu pemberian insentif yang tepat waktu dalam periode 3
-                      bulan :</label
-                    >
-                    <input
-                      type="number"
-                      class="val-realisasi"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                  <div class="formula-row">
-                    <label>3 Bulan :</label>
-                    <input
-                      type="number"
-                      class="val-target"
-                      min="0"
-                      oninput="hitungGrupJ()"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="q-score">0</div>
+              <div class="q-score" id="score_J1">0</div>
             </li>
           </ul>
         </details>
@@ -1559,7 +1800,7 @@
         <!-- Point K -->
         <details>
           <summary>
-            K. Kenaikan Pendapatan RSD per Pegawai
+            K. Net Death Rate
             <span class="score-badge"
               >Sub-Total: <span id="subTotalK">0.00</span></span
             >
@@ -1568,15 +1809,13 @@
             <li class="question-item formula-type">
               <div class="q-number">1</div>
               <div class="q-content">
-                <div class="q-title">Kenaikan Pendapatan RSD per Pegawai</div>
+                <div class="q-title">Net Death Rate</div>
                 <div class="formula-box">
                   <div class="formula-row">
-                    <label
-                      >Rata-rata peningkatan pendapatan jasa layanan BLUD (non
-                      APBD) :</label
-                    >
+                    <label>Jumlah kematian pasien > 48 jam perawatan :</label>
                     <input
                       type="number"
+                      id="input_k1_real"
                       class="val-realisasi"
                       min="0"
                       oninput="hitungGrupK()"
@@ -1584,9 +1823,13 @@
                     />
                   </div>
                   <div class="formula-row">
-                    <label>Jumlah pegawai RSD :</label>
+                    <label
+                      >Pasien keluar rumah sakit (hidup atau mati) dalam 1 tahun
+                      :</label
+                    >
                     <input
                       type="number"
+                      id="input_k1_target"
                       class="val-target"
                       min="0"
                       oninput="hitungGrupK()"
@@ -1595,7 +1838,7 @@
                   </div>
                 </div>
               </div>
-              <div class="q-score">0</div>
+              <div class="q-score" id="score_K1">0</div>
             </li>
           </ul>
         </details>
