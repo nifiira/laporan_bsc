@@ -100,7 +100,7 @@ body {
 }
 
 .lvl-3 {
-  background-color: #f1f5f9;
+  background-color: #e2e8f0;
   color: var(--text);
 }
 .lvl-3 .h-num {
@@ -219,9 +219,9 @@ select:focus {
 }
 .formula-row label {
   flex: 1;
-  font-size: 15px;
+  font-size: 15.5px;
   color: #475569;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 .formula-row input[type="number"] {
   width: 120px;
