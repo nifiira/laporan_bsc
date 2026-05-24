@@ -104,7 +104,7 @@ body {
   color: var(--text);
 }
 .lvl-3 .h-num {
-  background-color: #e2e8f0;
+  background-color: #dbeafe;
   font-size: 15px;
   border-right-color: #cbd5e1;
 }
@@ -136,6 +136,25 @@ details[open] summary {
   border-bottom: 2px solid var(--primary);
 }
 
+/* Membatalkan efek garis biru tebal HANYA untuk parent 1.1.1 saat dibuka */
+.details-parent[open] > .summary-parent {
+  border-bottom: 1px solid var(--border);
+}
+.summary-style {
+  padding: 0;
+  background-color: #f1f5f9;
+  color: var(--text);
+}
+/* Menghilangkan garis pembatas pada poin A, B, C, dst yang ada di dalam parent */
+.sub-item-wrapper details {
+  border-bottom: none !important;
+}
+
+/* Pastikan summary juga tidak memiliki garis saat ditutup */
+.sub-item-wrapper summary {
+  border-bottom: none;
+}
+/* End Efek Garis */
 .score-badge {
   background-color: var(--primary);
   color: white;
@@ -270,6 +289,38 @@ select:focus {
   color: var(--primary);
   padding: 5px 25px;
   border-radius: 6px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.btn-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: 0.2s;
+}
+.btn-group button:hover {
+  opacity: 0.8;
+}
+.btn-pdf {
+  background-color: #ef4444;
+}
+.btn-excel {
+  background-color: var(--success);
+}
+.btn-reset {
+  background-color: #64748b;
+  font-size: 14px !important;
+  padding: 10px 15px !important;
 }
 
 /* =========================================
