@@ -109,6 +109,14 @@ body {
   border-right-color: #cbd5e1;
 }
 
+.summary-clean {
+  display: flex;
+  align-items: center;
+  background-color: #dbeafe;
+  padding: 0;
+  list-style: none;
+}
+
 details {
   background: white;
   border-bottom: 1px solid var(--border);
@@ -130,9 +138,9 @@ summary {
   transition: background-color 0.2s;
 }
 summary:hover {
-  background-color: #dbeafe;
+  background-color: #c8def9;
 }
-details[open] summary {
+details[open] > summary {
   border-bottom: 2px solid var(--primary);
 }
 
@@ -140,21 +148,7 @@ details[open] summary {
 .details-parent[open] > .summary-parent {
   border-bottom: 1px solid var(--border);
 }
-.summary-style {
-  padding: 0;
-  background-color: #f1f5f9;
-  color: var(--text);
-}
-/* Menghilangkan garis pembatas pada poin A, B, C, dst yang ada di dalam parent */
-.sub-item-wrapper details {
-  border-bottom: none !important;
-}
 
-/* Pastikan summary juga tidak memiliki garis saat ditutup */
-.sub-item-wrapper summary {
-  border-bottom: none;
-}
-/* End Efek Garis */
 .score-badge {
   background-color: var(--primary);
   color: white;
