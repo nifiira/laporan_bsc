@@ -330,7 +330,7 @@ select:focus {
 
   /* Menyesuaikan lebar kolom nomor hierarki di HP */
   .h-num {
-    width: 45px;
+    width: 45px !important;
     padding: 10px 5px;
     font-size: 14px !important;
   }
@@ -339,12 +339,29 @@ select:focus {
     font-size: 14px !important;
   }
 
-  /* Menumpuk judul kategori dan badge sub-total */
+  /* Menumpuk judul kategori (A, B, C) dan badge sub-total */
   summary {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
+
+  /* ==========================================
+     TAMBAHAN: Pengecualian khusus untuk Parent 1.1.1
+     ========================================== */
+  /* Memastikan Parent 1.1.1 tetap sejajar ke samping (tidak ikut numpuk ke bawah) */
+  .summary-clean {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+
+  /* Mengurangi indentasi pada HP agar kotak form tidak terlalu sempit */
+  .sub-item-wrapper {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+  /* ========================================== */
 
   /* Membolehkan elemen pertanyaan turun ke baris baru */
   .question-item {
