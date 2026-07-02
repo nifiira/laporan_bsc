@@ -1,0 +1,402 @@
+:root {
+  --primary: #1e3a8a;
+  --primary-light: #eff6ff;
+  --success: #22c55e;
+  --warning: #eab308;
+  --danger: #ef4444;
+  --border: #cbd5e1;
+  --text: #334155;
+  --bg: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 0 40px 0;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  color: var(--primary);
+  margin: 0;
+  font-size: 24px;
+}
+.header p {
+  margin: 5px 0 0 0;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.excel-table-container {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.h-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.h-num {
+  width: 60px;
+  padding: 12px;
+  font-weight: 800;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.h-text {
+  padding: 12px 15px;
+  font-weight: 700;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.lvl-1 {
+  background-color: var(--primary);
+  color: white;
+}
+.lvl-1 .h-num {
+  border-right-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+}
+.lvl-1 .h-text {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.lvl-2 {
+  background-color: #bfdbfe;
+  color: var(--primary);
+}
+.lvl-2 .h-num {
+  border-right-color: #93c5fd;
+  font-size: 16px;
+}
+
+.lvl-3 {
+  background-color: #e2e8f0;
+  color: var(--text);
+}
+.lvl-3 .h-num {
+  background-color: #dbeafe;
+  font-size: 15px;
+  border-right-color: #cbd5e1;
+}
+
+.summary-clean {
+  display: flex;
+  align-items: center;
+  background-color: #dbeafe;
+  padding: 0;
+  list-style: none;
+}
+
+details {
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+details:last-child {
+  border-bottom: none;
+}
+
+summary {
+  padding: 15px;
+  background-color: var(--primary-light);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+summary:hover {
+  background-color: #c8def9;
+}
+details[open] > summary {
+  border-bottom: 2px solid var(--primary);
+}
+
+/* Membatalkan efek garis biru tebal HANYA untuk parent 1.1.1 saat dibuka */
+.details-parent[open] > .summary-parent {
+  border-bottom: 1px solid var(--border);
+}
+
+.score-badge {
+  background-color: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.rumus-badge {
+  background-color: var(--warning);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.question-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.question-item {
+  padding: 20px 15px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.question-item:last-child {
+  border-bottom: none;
+}
+
+.q-number {
+  font-weight: bold;
+  width: 30px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  padding: 2px 0;
+  flex-shrink: 0;
+}
+.q-content {
+  flex: 1;
+}
+.q-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.formula-box {
+  background: #f8fafc;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.formula-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+.formula-row:last-child {
+  margin-bottom: 0;
+}
+.formula-row label {
+  flex: 1;
+  font-size: 15.5px;
+  color: #475569;
+  /* font-family: sans-serif; */
+}
+.formula-row input[type="number"] {
+  width: 120px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.q-score {
+  width: 90px;
+  text-align: center;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: var(--success);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.total-panel {
+  margin-top: 30px;
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.total-panel h3 {
+  margin: 0;
+  font-size: 20px;
+}
+.total-score {
+  font-size: 28px;
+  font-weight: bold;
+  background: white;
+  color: var(--primary);
+  padding: 5px 25px;
+  border-radius: 6px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.btn-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: 0.2s;
+}
+.btn-group button:hover {
+  opacity: 0.8;
+}
+.btn-pdf {
+  background-color: #ef4444;
+}
+.btn-excel {
+  background-color: var(--success);
+}
+.btn-reset {
+  background-color: #64748b;
+  font-size: 14px !important;
+  padding: 10px 15px !important;
+}
+
+/* =========================================
+           KODE RESPONSIVE UNTUK HP DAN TABLET
+           ========================================= */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  .header h2 {
+    font-size: 20px;
+  }
+
+  /* Menyesuaikan lebar kolom nomor hierarki di HP */
+  .h-num {
+    width: 45px !important;
+    padding: 10px 5px;
+    font-size: 14px !important;
+  }
+  .h-text {
+    padding: 10px;
+    font-size: 14px !important;
+  }
+
+  /* Menumpuk judul kategori (A, B, C) dan badge sub-total */
+  summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* ==========================================
+     TAMBAHAN: Pengecualian khusus untuk Parent 1.1.1
+     ========================================== */
+  /* Memastikan Parent 1.1.1 tetap sejajar ke samping (tidak ikut numpuk ke bawah) */
+  .summary-clean {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+
+  /* Mengurangi indentasi pada HP agar kotak form tidak terlalu sempit */
+  .sub-item-wrapper {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+  /* ========================================== */
+
+  /* Membolehkan elemen pertanyaan turun ke baris baru */
+  .question-item {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .q-content {
+    /* Mengambil sisa lebar layar dikurangi lebar kotak nomor */
+    width: calc(100% - 45px);
+    flex: auto;
+  }
+
+  /* Membuat kotak skor memanjang penuh di bawah pertanyaan */
+  .q-score {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  /* Menyusun label dan form input angka ke bawah */
+  .formula-row {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .formula-row label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .formula-row input[type="number"] {
+    width: 100%;
+  }
+
+  /* Menyusun panel total akhir ke bawah */
+  .total-panel {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}

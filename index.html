@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistem Penilaian Kinerja BLUD RSUD</title>
-    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
+
   <body>
     <div class="container">
       <div class="header">
@@ -3359,19 +3360,23 @@
           <!-- Point A -->
           <details>
             <summary>
-              A. Periode Penagihan Piutang
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
-              >
+              A. Periode Penagihan Piutang (Collection Period)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalA">0.00</span>
+              </span>
             </summary>
+
             <ul class="question-list" id="groupA">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
-                  <div class="q-title">Periode Penagihan Piutang</div>
+                  <div class="q-title">
+                    Periode Penagihan Piutang (Collection Period)
+                  </div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label>Piutang Operasional x 360 x 1 hari :</label>
+                      <label>Piutang Operasional × 360 × 1 hari :</label>
                       <input
                         type="number"
                         class="val-realisasi"
@@ -3380,6 +3385,7 @@
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
                       <label>Pendapatan Operasional :</label>
                       <input
@@ -3392,6 +3398,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
@@ -3400,21 +3407,23 @@
           <!-- Point B -->
           <details>
             <summary>
-              B. Rata-rata Jam Pelatihan Pegawai BLUD
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
-              >
+              B. Perputaran Aset Tetap (Fixed Asset Turnover)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalB">0.00</span>
+              </span>
             </summary>
+
             <ul class="question-list" id="groupB">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">
-                    Rata-rata Jam Pelatihan Pegawai BLUD
+                    Perputaran Aset Tetap (Fixed Asset Turnover)
                   </div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label>Total realisasi jam pelatihan pegawai :</label>
+                      <label>Pendapatan Operasional - LO :</label>
                       <input
                         type="number"
                         class="val-realisasi"
@@ -3423,8 +3432,9 @@
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label>Jumlah pegawai x 20 jam :</label>
+                      <label>Aset Tetap :</label>
                       <input
                         type="number"
                         class="val-target"
@@ -3435,6 +3445,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
@@ -3443,22 +3454,23 @@
           <!-- Point C -->
           <details>
             <summary>
-              C. Pelatihan 20 Jam per Pegawai
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
-              >
+              C. Perputaran Persediaan (Inventory Turnover)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalC">0.00</span>
+              </span>
             </summary>
+
             <ul class="question-list" id="groupC">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
-                  <div class="q-title">Pelatihan 20 Jam per Pegawai</div>
+                  <div class="q-title">
+                    Perputaran Persediaan (Inventory Turnover)
+                  </div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jumlah pegawai yang mendapat pelatihan minimal 20 jam
-                        :</label
-                      >
+                      <label>Total Persediaan × 365 × 1 hari :</label>
                       <input
                         type="number"
                         class="val-realisasi"
@@ -3467,11 +3479,9 @@
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label
-                        >Jumlah seluruh pegawai di BLUD Rumah Sakit Daerah
-                        :</label
-                      >
+                      <label>Pendapatan BLUD (Non APBD) dan APBD - LO :</label>
                       <input
                         type="number"
                         class="val-target"
@@ -3482,6 +3492,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
@@ -3490,24 +3501,23 @@
           <!-- Point D -->
           <details>
             <summary>
-              D. Petugas Layanan Gawat Darurat Bersetifikat (PGD)
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalD">0.00</span></span
-              >
+              D. Imbalan atas Aset Tetap (Return on Fixed Asset)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalD">0.00</span>
+              </span>
             </summary>
+
             <ul class="question-list" id="groupD">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">
-                    Petugas Layanan Gawat Darurat Bersetifikat (PGD)
+                    Imbalan atas Aset Tetap (Return on Fixed Asset)
                   </div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Total Petugas Layanan Gawat Darurat yang bersertifikat
-                        :</label
-                      >
+                      <label>Surplus / Defisit Operasional :</label>
                       <input
                         type="number"
                         class="val-realisasi"
@@ -3516,8 +3526,9 @@
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label>Total petugas Layanan Gawat Darurat :</label>
+                      <label>Aset Tetap :</label>
                       <input
                         type="number"
                         class="val-target"
@@ -3528,6 +3539,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
@@ -3536,598 +3548,350 @@
           <!-- Point E -->
           <details>
             <summary>
-              E. Program Reward and Punishment
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
-              >
+              E. Imbalan atas Ekuitas (Return on Equity)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalE">0.00</span>
+              </span>
             </summary>
+
             <ul class="question-list" id="groupE">
-              <li class="question-item">
-                <div class="q-number">1</div>
-                <div class="q-content">
-                  <div class="q-title">Program Reward and Punishment</div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
-                      -- Pilih Jawaban --
-                    </option>
-                    <option value="1">
-                      1. Tidak ada program reward and punishment
-                    </option>
-                    <option value="0">2. Ada program tidak dilaksanakan</option>
-                    <option value="0">
-                      3. Ada program sebagian dilaksanakan
-                    </option>
-                    <option value="0">
-                      4. Ada program dilaksanakan sepenuhnya
-                    </option>
-                  </select>
-                </div>
-                <div class="q-score" style="color: #94a3b8">-</div>
-              </li>
-            </ul>
-          </details>
-
-          <!-- Point F -->
-          <details>
-            <summary>
-              F. Presentase Dokter Pendidik Klinis yang Mendapat TOT
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
-              >
-            </summary>
-            <ul class="question-list" id="groupF">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">
-                    Presentase Dokter Pendidik Klinis yang Mendapat TOT
+                    Imbalan atas Ekuitas (Return on Equity)
                   </div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jumlah dokter pendidik klinis yang mendapatkan TOT
-                        :</label
-                      >
+                      <label>Surplus / Defisit Operasional :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungGrupE()"
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label>Jumlah seluruh dokter pendidik klinis :</label>
+                      <label>Ekuitas - Surplus / Defisit Operasional :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungGrupE()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
           </details>
+        </details>
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.2</div>
+            <div class="h-text">
+              KINERJA MEMENUHI SELURUH KEWAJIBAN JANGKA PENDEKNYA
+            </div>
+          </summary>
 
-          <!-- Point G -->
+          <!-- Point A -->
           <details>
             <summary>
-              G. Kecukupan Sarana Medis
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalG">0.00</span></span
-              >
+              A. Rasio Kas (Cash Ratio)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalA">0.00</span>
+              </span>
             </summary>
-            <ul class="question-list" id="groupG">
+
+            <ul class="question-list" id="groupA">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
+
                 <div class="q-content">
-                  <div class="q-title">Kecukupan Sarana Medis</div>
+                  <div class="q-title">Rasio Kas (Cash Ratio)</div>
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jenis dan Jumlah sarana medis yang disediakan RSD
-                        :</label
-                      >
+                      <label>Kas dan Setara Kas :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungGrupA()"
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label
-                        >Jenis dan Jumlah sarana medis sesuai Standar yang
-                        ditetapkan oleh Permenkes Nomor 40 Tahun 2022 :</label
-                      >
+                      <label>Kewajiban Jangka Pendek :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungGrupA()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point H -->
+          <!-- Point B -->
           <details>
             <summary>
-              H. Pelayanan pemeliharaan sarana rumah sakit
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalH">0.00</span></span
-              >
+              B. Rasio Lancar (Current Ratio)
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalB">0.00</span>
+              </span>
             </summary>
-            <ul class="question-list" id="groupH">
+
+            <ul class="question-list" id="groupB">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
+
                 <div class="q-content">
-                  <div class="q-title">
-                    Kecepatan Waktu menanggapi kerusakan alat
-                  </div>
+                  <div class="q-title">Rasio Lancar (Current Ratio)</div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jumlah laporan kerusakan alat yang ditangani < 15 menit
-                        :</label
-                      >
+                      <label>Aset Lancar :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label>Jumlah Seluruh Laporan Kerusakan alat :</label>
+                      <label>Kewajiban Jangka Pendek :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
+
                 <div class="q-score">0</div>
               </li>
+            </ul>
+          </details>
+        </details>
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.3</div>
+            <div class="h-text">KINERJA MEMENUHI SELURUH KEWAJIBAN</div>
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Rasio Kewajiban terhadap Aset
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalA">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list" id="groupA">
               <li class="question-item formula-type">
-                <div class="q-number">2</div>
+                <div class="q-number">1</div>
+
                 <div class="q-content">
-                  <div class="q-title">Ketepatan Waktu Pemeliharaan Alat</div>
+                  <div class="q-title">Rasio Kewajiban terhadap Aset</div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jumlah alat yg dilakukan pemeliharaan tepat waktu
-                        :</label
-                      >
+                      <label>Jumlah Kewajiban :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungGrupA()"
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label
-                        >Seluruh alat yg seharusnya dilakukan pemeliharaan
-                        :</label
-                      >
+                      <label>Jumlah Aset :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungGrupA()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
-              </li>
-              <li class="question-item formula-type">
-                <div class="q-number">3</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Peralatan laboratorium dan alat ukur yg digunakan dlm
-                    pelayanan terkalibrasi tepat waktu sesuai ketentuan
-                    kalibrasi.
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Jumlah Seluruh alat kesehatan fasilitas kesehatan yang
-                        berkalibrasi tepat waktu :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Jumlah alat kesehatan fasilitas kesehatan yang perlu
-                        dikalibrasi :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point I -->
+          <!-- Point B -->
           <details>
             <summary>
-              I. Pengembangan SIM RSD
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalI">0.00</span></span
-              >
+              B. Rasio Kewajiban terhadap Ekuitas
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalB">0.00</span>
+              </span>
             </summary>
-            <ul class="question-list" id="groupI">
+
+            <ul class="question-list" id="groupB">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
+
                 <div class="q-content">
-                  <div class="q-title">Pengembangan SIM RSD</div>
+                  <div class="q-title">Rasio Kewajiban terhadap Ekuitas</div>
+
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label>Jumlah modul yang disediakan RSD :</label>
+                      <label>Jumlah Kewajiban :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
+
                     <div class="formula-row">
-                      <label>22 Modul :</label>
+                      <label>Jumlah Ekuitas :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
+
+                <div class="q-score">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.4</div>
+            <div class="h-text">
+              KINERJA KEMAMPUAN PENERIMAAN DARI JASA LAYANAN UNTUK MEMBIAYAI
+              PENGELUARAN
+            </div>
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Rasio Pendapatan BLUD non APBD-LO terhadap Biaya Operasional /
+              Cost Recovery Rate
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalA">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list" id="groupA">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">
+                    Rasio Pendapatan BLUD non APBD-LO terhadap Biaya Operasional
+                    / Cost Recovery Rate
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Pendapatan BLUD non APBD - LO :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungGrupA()"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Biaya Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungGrupA()"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div class="q-score">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point J -->
+          <!-- Point B -->
           <details>
             <summary>
-              J. Pelayanan administrasi manajemen
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalJ">0.00</span></span
-              >
+              B. Porsi Pendapatan APBD-LO dibandingkan Pendapatan non APBD-LO
+              <span class="score-badge">
+                Sub-Total: <span id="subTotalB">0.00</span>
+              </span>
             </summary>
-            <ul class="question-list" id="groupJ">
-              <!-- J1 -->
+
+            <ul class="question-list" id="groupB">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
+
                 <div class="q-content">
                   <div class="q-title">
-                    Tindak lanjut penyelesaian hasil pertemuan direksi
+                    Porsi Pendapatan APBD-LO dibandingkan Pendapatan non APBD-LO
                   </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Hasil keputusan direksi yang ditindaklanjuti :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Total hasil keputusan direksi yang harus
-                        ditindaklanjuti :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
 
-              <!-- J2 -->
-              <li class="question-item formula-type">
-                <div class="q-number">2</div>
-                <div class="q-content">
-                  <div class="q-title">Kelengkapan laporan kinerja BLUD</div>
                   <div class="formula-box">
                     <div class="formula-row">
-                      <label>Jumlah laporan kinerja lengkap :</label>
+                      <label>Pendapatan BLUD non APBD - LO :</label>
                       <input
                         type="number"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
-                    <div class="formula-row">
-                      <label>Jumlah laporanyang seharusnya disusun :</label>
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
 
-              <!-- J3 -->
-              <li class="question-item formula-type">
-                <div class="q-number">3</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Ketepatan waktu pengusulan kenaikan pangkat
-                  </div>
-                  <div class="formula-box">
                     <div class="formula-row">
-                      <label
-                        >Jumah Pegawai yg diusulkan tepat waktu sesuai periode
-                        kenaikan pangkat :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Jumah Seluruh Pegawai yg seharusnya diusulkan kenaikan
-                        pangkat :</label
-                      >
+                      <label>Pendapatan APBD - LO :</label>
                       <input
                         type="number"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungGrupB()"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
-              </li>
 
-              <!-- J4 -->
-              <li class="question-item formula-type">
-                <div class="q-number">4</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Ketepatan waktu pengurusan gaji berkala
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Jumlah pegawai yg pengurusan kenaikan gaji berkalanya
-                        tepat waktu :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Jumlah seluruh pegawai yg harus dilakukan pengurusan
-                        kenaikan gaji berkalanya :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
-
-              <!-- J5 -->
-              <li class="question-item formula-type">
-                <div class="q-number">5</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Ketepatan waktu penyusunan laporan keuangan
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label>Jumlah laporan keuangan yg diselesaikan :</label>
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Jumlah laporan keuangan yg seharusnya diselesaikan
-                        :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
-
-              <!-- J6 -->
-              <li class="question-item formula-type">
-                <div class="q-number">6</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Ketepatan waktu pemberian informasi tagihan pasien rawat
-                    inap (jam).
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Jumlah kumulatif waktu pemberian informasi tagihan
-                        pasien rawat inap :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label>Jumlah pasien rawat inap :</label>
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
-
-              <!-- J7 -->
-              <li class="question-item formula-type">
-                <div class="q-number">7</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Ketepatan waktu pemberian imbalan (insentif) sesuai
-                    kesepakatan waktu
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Waktu pemberian insentif yang tepat waktu dalam periode
-                        3 bulan :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label>3 Bulan :</label>
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupJ()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
-            </ul>
-          </details>
-
-          <!-- Point K -->
-          <details>
-            <summary>
-              K. Kenaikan Pendapatan RSD per Pegawai
-              <span class="score-badge"
-                >Sub-Total: <span id="subTotalK">0.00</span></span
-              >
-            </summary>
-            <ul class="question-list" id="groupK">
-              <li class="question-item formula-type">
-                <div class="q-number">1</div>
-                <div class="q-content">
-                  <div class="q-title">Kenaikan Pendapatan RSD per Pegawai</div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Rata-rata peningkatan pendapatan jasa layanan BLUD (non
-                        APBD) :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupK()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label>Jumlah pegawai RSD :</label>
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupK()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
                 <div class="q-score">0</div>
               </li>
             </ul>
