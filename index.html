@@ -9,6 +9,69 @@
   </head>
 
   <body>
+    <div
+      class="auth-panel"
+      style="
+        background: #f8f9fa;
+        padding: 15px;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div id="panel-login">
+        <strong>Login Petugas: </strong>
+        <input
+          type="email"
+          id="inputEmail"
+          placeholder="Masukkan Email"
+          style="padding: 5px; margin-right: 5px"
+        />
+        <input
+          type="password"
+          id="inputPassword"
+          placeholder="Masukkan Password"
+          style="padding: 5px; margin-right: 5px"
+        />
+        <button
+          onclick="aksiLogin()"
+          style="
+            padding: 5px 15px;
+            background: #244282;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+          "
+        >
+          Masuk
+        </button>
+      </div>
+
+      <div id="panel-user" style="display: none">
+        <strong>Petugas Aktif: </strong>
+        <span
+          id="namaUser"
+          style="color: #244282; margin-right: 15px; font-weight: bold"
+          >-</span
+        >
+        <button
+          onclick="logoutUser()"
+          style="
+            padding: 5px 15px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+          "
+        >
+          Keluar (Logout)
+        </button>
+      </div>
+    </div>
     <div class="container">
       <div class="header">
         <h2>Sistem Penilaian Kinerja BLUD RSUD</h2>
@@ -26,11 +89,17 @@
         <div class="h-row lvl-2">
           <div class="h-num">1.1</div>
           <div class="h-text">KINERJA ASPEK PELAYANAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_11_Total">0.00</span></span
+          >
         </div>
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">1.1.1</div>
             <div class="h-text">Sub Aspek Pertumbuhan Pembelajaran</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_111_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A -->
@@ -38,10 +107,10 @@
             <summary>
               A. Kecukupan Sumber Daya Manusia
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_111_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -55,8 +124,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('111_A')"
                         placeholder="0"
                       />
                     </div>
@@ -68,14 +138,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('111_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_A">0</div>
               </li>
             </ul>
           </details>
@@ -85,10 +156,10 @@
             <summary>
               B. Rata-rata Jam Pelatihan Pegawai BLUD
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
+                >Nilai : <span id="subTotal_111_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -101,8 +172,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('111_B')"
                         placeholder="0"
                       />
                     </div>
@@ -111,27 +183,27 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('111_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_B">0</div>
               </li>
             </ul>
           </details>
-
           <!-- Point C -->
           <details>
             <summary>
               C. Pelatihan 20 Jam per Pegawai
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
+                >Nilai : <span id="subTotal_111_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -145,8 +217,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('111_C')"
                         placeholder="0"
                       />
                     </div>
@@ -158,14 +231,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('111_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_C">0</div>
               </li>
             </ul>
           </details>
@@ -175,10 +249,10 @@
             <summary>
               D. Petugas Layanan Gawat Darurat Bersetifikat (PGD)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalD">0.00</span></span
+                >Nilai : <span id="subTotal_111_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupD">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -194,8 +268,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('111_D')"
                         placeholder="0"
                       />
                     </div>
@@ -204,14 +279,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('111_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_D">0</div>
               </li>
             </ul>
           </details>
@@ -221,31 +297,36 @@
             <summary>
               E. Program Reward and Punishment
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_111_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">Program Reward and Punishment</div>
-                  <select onchange="hitungGrupE()">
+                  <select
+                    id="select_111_E"
+                    onchange="hitungSkorOtomatis('111_E')"
+                  >
                     <option value="1" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">
+                    <option value="0">
                       1. Tidak ada program reward and punishment
                     </option>
-                    <option value="0">2. Ada program tidak dilaksanakan</option>
-                    <option value="0">
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="1">
                       3. Ada program sebagian dilaksanakan
                     </option>
-                    <option value="0">
+                    <option value="1.5">
                       4. Ada program dilaksanakan sepenuhnya
                     </option>
                   </select>
                 </div>
-                <div class="q-score" style="color: #94a3b8">-</div>
+                <div class="q-score" id="skor_111_E">-</div>
               </li>
             </ul>
           </details>
@@ -255,10 +336,10 @@
             <summary>
               F. Presentase Dokter Pendidik Klinis yang Mendapat TOT
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
+                >Nilai : <span id="subTotal_111_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -274,8 +355,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_F"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('111_F')"
                         placeholder="0"
                       />
                     </div>
@@ -284,14 +366,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_F"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('111_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_F">0</div>
               </li>
             </ul>
           </details>
@@ -301,10 +384,10 @@
             <summary>
               G. Kecukupan Sarana Medis
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalG">0.00</span></span
+                >Nilai : <span id="subTotal_111_G">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupG">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -318,8 +401,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_G"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('111_G')"
                         placeholder="0"
                       />
                     </div>
@@ -331,14 +415,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_G"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('111_G')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_G">0</div>
               </li>
             </ul>
           </details>
@@ -348,10 +433,10 @@
             <summary>
               H. Pelayanan pemeliharaan sarana rumah sakit
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalH">0.00</span></span
+                >Nilai : <span id="skor_111_H_Total">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupH">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -367,8 +452,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_H1"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H1')"
                         placeholder="0"
                       />
                     </div>
@@ -377,14 +463,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_H1"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H1')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_H1">0</div>
               </li>
               <li class="question-item formula-type">
                 <div class="q-number">2</div>
@@ -399,8 +486,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_H2"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H2')"
                         placeholder="0"
                       />
                     </div>
@@ -412,14 +500,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_H2"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H2')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_H2">0</div>
               </li>
               <li class="question-item formula-type">
                 <div class="q-number">3</div>
@@ -438,8 +527,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_H3"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H3')"
                         placeholder="0"
                       />
                     </div>
@@ -451,14 +541,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_H3"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('111_H3')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_H3">0</div>
               </li>
             </ul>
           </details>
@@ -468,10 +559,10 @@
             <summary>
               I. Pengembangan SIM RSD
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalI">0.00</span></span
+                >Nilai : <span id="subTotal_111_I">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupI">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -482,8 +573,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_I"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('111_I')"
                         placeholder="0"
                       />
                     </div>
@@ -492,14 +584,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_I"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('111_I')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_I">0</div>
               </li>
             </ul>
           </details>
@@ -509,10 +602,10 @@
             <summary>
               J. Pelayanan administrasi manajemen
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalJ">0.00</span></span
+                >Nilai : <span id="skor_111_J_Total">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupJ">
+            <ul class="question-list">
               <!-- J1 -->
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
@@ -528,8 +621,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J1"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J1')"
                         placeholder="0"
                       />
                     </div>
@@ -541,14 +635,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J1"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J1')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J1">0</div>
               </li>
 
               <!-- J2 -->
@@ -562,8 +657,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J2"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J2')"
                         placeholder="0"
                       />
                     </div>
@@ -572,14 +668,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J2"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J2')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J2">0</div>
               </li>
 
               <!-- J3 -->
@@ -598,8 +695,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J3"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J3')"
                         placeholder="0"
                       />
                     </div>
@@ -611,14 +709,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J3"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J3')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J3">0</div>
               </li>
 
               <!-- J4 -->
@@ -637,8 +736,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J4"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J4')"
                         placeholder="0"
                       />
                     </div>
@@ -650,14 +750,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J4"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J4')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J4">0</div>
               </li>
 
               <!-- J5 -->
@@ -673,8 +774,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J5"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J5')"
                         placeholder="0"
                       />
                     </div>
@@ -686,14 +788,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J5"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J5')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J5">0</div>
               </li>
 
               <!-- J6 -->
@@ -713,8 +816,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J6"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J6')"
                         placeholder="0"
                       />
                     </div>
@@ -723,14 +827,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J6"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J6')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J6">0</div>
               </li>
 
               <!-- J7 -->
@@ -750,8 +855,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_J7"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J7')"
                         placeholder="0"
                       />
                     </div>
@@ -760,14 +866,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_J7"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('111_J7')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_J7">0</div>
               </li>
             </ul>
           </details>
@@ -777,10 +884,10 @@
             <summary>
               K. Kenaikan Pendapatan RSD per Pegawai
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalK">0.00</span></span
+                >Nilai : <span id="subTotal_111_K">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupK">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -794,8 +901,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_111_K"
                         min="0"
-                        oninput="hitungGrupK()"
+                        oninput="hitungSkorOtomatis('111_K')"
                         placeholder="0"
                       />
                     </div>
@@ -804,14 +912,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_111_K"
                         min="0"
-                        oninput="hitungGrupK()"
+                        oninput="hitungSkorOtomatis('111_K')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_111_K">0</div>
               </li>
             </ul>
           </details>
@@ -829,21 +938,29 @@
         <div class="h-row lvl-2">
           <div class="h-num">2.1</div>
           <div class="h-text">KINERJA ASPEK PELAYANAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_21_Total">0.00</span></span
+          >
         </div>
+
+        <!--------------------------- Point 211 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">2.1.1</div>
             <div class="h-text">Sub Aspek Pertumbuhan Produktivitas</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_211_Total">0.00</span></span
+            >
           </summary>
           <!-- Point A2.1.1 -->
           <details>
             <summary>
               A. Pertumbuhan Kunjungan Rawat Jalan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_211_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -857,8 +974,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('211_A')"
                         placeholder="0"
                       />
                     </div>
@@ -870,27 +988,28 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('211_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_A">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point B2.1.1 -->
+          <!-- Point 211 B -->
           <details>
             <summary>
               B. Pertumbuhan rata-rata kunjungan Gawat Darurat
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
+                >Nilai : <span id="subTotal_211_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -906,8 +1025,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('211_B')"
                         placeholder="0"
                       />
                     </div>
@@ -919,14 +1039,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('211_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_B">0</div>
               </li>
             </ul>
           </details>
@@ -936,10 +1057,10 @@
             <summary>
               C. Pertumbuhan Kunjungan Rawat Inap
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
+                >Nilai : <span id="subTotal_211_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -953,8 +1074,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('211_C')"
                         placeholder="0"
                       />
                     </div>
@@ -966,14 +1088,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('211_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_C">0</div>
               </li>
             </ul>
           </details>
@@ -983,10 +1106,10 @@
             <summary>
               D. Pertumbuhan Pemeriksaan Radiologi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalD">0.00</span></span
+                >Nilai : <span id="subTotal_211_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupD">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1000,8 +1123,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('211_D')"
                         placeholder="0"
                       />
                     </div>
@@ -1013,14 +1137,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('211_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_D">0</div>
               </li>
             </ul>
           </details>
@@ -1030,10 +1155,10 @@
             <summary>
               E. Pertumbuhan Pemeriksaan Laboratorium
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_211_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1049,8 +1174,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_E"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('211_E')"
                         placeholder="0"
                       />
                     </div>
@@ -1062,14 +1188,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_E"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('211_E')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_E">0</div>
               </li>
             </ul>
           </details>
@@ -1079,10 +1206,10 @@
             <summary>
               F. Pertumbuhan Operasi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
+                >Nilai : <span id="subTotal_211_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1095,8 +1222,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_F"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('211_F')"
                         placeholder="0"
                       />
                     </div>
@@ -1108,14 +1236,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_F"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('211_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_F">0</div>
               </li>
             </ul>
           </details>
@@ -1125,10 +1254,10 @@
             <summary>
               G. Pertumbuhan Rehab Medik
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalG">0.00</span></span
+                >Nilai : <span id="subTotal_211_G">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupG">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1142,8 +1271,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_G"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('211_G')"
                         placeholder="0"
                       />
                     </div>
@@ -1155,14 +1285,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_G"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('211_G')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_G">0</div>
               </li>
             </ul>
           </details>
@@ -1172,10 +1303,10 @@
             <summary>
               H. Pertumbuhan Peserta Didik Pendidikan Kedokteran
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalH">0.00</span></span
+                >Nilai : <span id="subTotal_211_H">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupH">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1191,8 +1322,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_H"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('211_H')"
                         placeholder="0"
                       />
                     </div>
@@ -1204,88 +1336,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_H"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('211_H')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
-              </li>
-              <li class="question-item formula-type">
-                <div class="q-number">2</div>
-                <div class="q-content">
-                  <div class="q-title">Ketepatan Waktu Pemeliharaan Alat</div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Jumlah alat yg dilakukan pemeliharaan tepat waktu
-                        :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Seluruh alat yg seharusnya dilakukan pemeliharaan
-                        :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
-              </li>
-              <li class="question-item formula-type">
-                <div class="q-number">3</div>
-                <div class="q-content">
-                  <div class="q-title">
-                    Peralatan laboratorium dan alat ukur yg digunakan dlm
-                    pelayanan terkalibrasi tepat waktu sesuai ketentuan
-                    kalibrasi.
-                  </div>
-                  <div class="formula-box">
-                    <div class="formula-row">
-                      <label
-                        >Jumlah Seluruh alat kesehatan fasilitas kesehatan yang
-                        berkalibrasi tepat waktu :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-realisasi"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                    <div class="formula-row">
-                      <label
-                        >Jumlah alat kesehatan fasilitas kesehatan yang perlu
-                        dikalibrasi :</label
-                      >
-                      <input
-                        type="number"
-                        class="val-target"
-                        min="0"
-                        oninput="hitungGrupH()"
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_H">0</div>
               </li>
             </ul>
           </details>
@@ -1295,10 +1354,10 @@
             <summary>
               I. Pertumbuhan Penelitian yang dipublikasikan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalI">0.00</span></span
+                >Nilai : <span id="subTotal_211_I">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupI">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1314,8 +1373,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_211_I"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('211_I')"
                         placeholder="0"
                       />
                     </div>
@@ -1327,24 +1387,28 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_211_I"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('211_I')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_211_I">0</div>
               </li>
             </ul>
           </details>
         </details>
 
-        <!-- Point 2.1.2 -->
+        <!--------------------------- Point 212 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">2.1.2</div>
             <div class="h-text">Sub Aspek Efektifitas Pelayanan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_212_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A2.1.2 -->
@@ -1352,10 +1416,10 @@
             <summary>
               A. Kelengkapan Rekam Medik 24 Jam Selesai Pelayanan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_212_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1368,8 +1432,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_212_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('212_A')"
                         placeholder="0"
                       />
                     </div>
@@ -1378,14 +1443,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_212_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('212_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_212_A">0</div>
               </li>
             </ul>
           </details>
@@ -1395,10 +1461,10 @@
             <summary>
               B. Pengembalian Rekam Medik
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
+                >Nilai : <span id="subTotal_212_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1411,10 +1477,10 @@
                       >
                       <input
                         type="number"
-                        id="input_b1_real"
                         class="val-realisasi"
+                        id="real_212_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('212_B')"
                         placeholder="0"
                       />
                     </div>
@@ -1422,16 +1488,16 @@
                       <label>Jumlah semua rekam medik :</label>
                       <input
                         type="number"
-                        id="input_b1_target"
                         class="val-target"
+                        id="target_212_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('212_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_B1">0</div>
+                <div class="q-score" id="skor_212_B">0</div>
               </li>
             </ul>
           </details>
@@ -1441,10 +1507,10 @@
             <summary>
               C. Angka Pembatalan Operasi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
+                >Nilai : <span id="subTotal_212_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1454,10 +1520,10 @@
                       <label>Jumlah pembatalan operasi elektif :</label>
                       <input
                         type="number"
-                        id="input_c1_real"
+                        id="real_212_C"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('212_C')"
                         placeholder="0"
                       />
                     </div>
@@ -1467,16 +1533,16 @@
                       >
                       <input
                         type="number"
-                        id="input_c1_target"
+                        id="target_212_C"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('212_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_C1">0</div>
+                <div class="q-score" id="skor_212_C">0</div>
               </li>
             </ul>
           </details>
@@ -1486,10 +1552,10 @@
             <summary>
               D. Angka Kegagalan Hasil Radiologi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalD">0.00</span></span
+                >Nilai : <span id="subTotal_212_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupD">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1499,10 +1565,10 @@
                       <label>Jumlah kegagalan hasil radiologi :</label>
                       <input
                         type="number"
-                        id="input_d1_real"
+                        id="real_212_D"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('212_D')"
                         placeholder="0"
                       />
                     </div>
@@ -1510,16 +1576,16 @@
                       <label>Jumlah pemeriksaan radiologi :</label>
                       <input
                         type="number"
-                        id="input_d1_target"
+                        id="target_212_D"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('212_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_D1">0</div>
+                <div class="q-score" id="skor_212_D">0</div>
               </li>
             </ul>
           </details>
@@ -1530,10 +1596,10 @@
               E. Penulisan Resep Sesuai Formularium/Kepatuhan Penggunaan
               Formularium Nasional
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_212_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1549,10 +1615,10 @@
                       >
                       <input
                         type="number"
-                        id="input_e1_real"
+                        id="real_212_E"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('212_E')"
                         placeholder="0"
                       />
                     </div>
@@ -1563,16 +1629,16 @@
                       >
                       <input
                         type="number"
-                        id="input_e1_target"
+                        id="target_212_E"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('212_E')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_E1">0</div>
+                <div class="q-score" id="skor_212_E">0</div>
               </li>
             </ul>
           </details>
@@ -1582,10 +1648,10 @@
             <summary>
               F. Angka Pengulangan Pemeriksaan Laboratorium
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
+                >Nilai : <span id="subTotal_212_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1600,10 +1666,10 @@
                       >
                       <input
                         type="number"
-                        id="input_f1_real"
+                        id="real_212_F"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('212_F')"
                         placeholder="0"
                       />
                     </div>
@@ -1611,16 +1677,16 @@
                       <label>Jumlah seluruh pemeriksaan laboratorium :</label>
                       <input
                         type="number"
-                        id="input_f1_target"
+                        id="target_212_F"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('212_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_F1">0</div>
+                <div class="q-score" id="skor_212_F">0</div>
               </li>
             </ul>
           </details>
@@ -1630,10 +1696,10 @@
             <summary>
               G. Bed Occupancy Rate (BOR)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalG">0.00</span></span
+                >Nilai : <span id="subTotal_212_G">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupG">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1643,10 +1709,10 @@
                       <label>Jumlah hari perawatan :</label>
                       <input
                         type="number"
-                        id="input_g1_real"
+                        id="real_212_G"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('212_G')"
                         placeholder="0"
                       />
                     </div>
@@ -1654,16 +1720,16 @@
                       <label>Jumlah hari x jumlah tempat tidur :</label>
                       <input
                         type="number"
-                        id="input_g1_target"
+                        id="target_212_G"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('212_G')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_G1">0</div>
+                <div class="q-score" id="skor_212_G">0</div>
               </li>
             </ul>
           </details>
@@ -1673,10 +1739,10 @@
             <summary>
               H. Waktu Tunggu Hasil Lab Kritis/Pelaporan Hasil Kritis
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalH">0.00</span></span
+                >Nilai : <span id="subTotal_212_H">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupH">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1692,10 +1758,10 @@
                       >
                       <input
                         type="number"
-                        id="input_h1_real"
+                        id="real_212_H"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('212_H')"
                         placeholder="0"
                       />
                     </div>
@@ -1706,16 +1772,16 @@
                       >
                       <input
                         type="number"
-                        id="input_h1_target"
+                        id="target_212_H"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('212_H')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_H1">0</div>
+                <div class="q-score" id="skor_212_H">0</div>
               </li>
             </ul>
           </details>
@@ -1725,10 +1791,10 @@
             <summary>
               I. Waktu Tunggu di Rawat Jalan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalI">0.00</span></span
+                >Nilai : <span id="subTotal_212_I">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupI">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1741,10 +1807,10 @@
                       >
                       <input
                         type="number"
-                        id="input_i1_real"
+                        id="real_212_I"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('212_I')"
                         placeholder="0"
                       />
                     </div>
@@ -1755,16 +1821,16 @@
                       >
                       <input
                         type="number"
-                        id="input_i1_target"
+                        id="target_212_I"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupI()"
+                        oninput="hitungSkorOtomatis('212_I')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_I1">0</div>
+                <div class="q-score" id="skor_212_I">0</div>
               </li>
             </ul>
           </details>
@@ -1774,10 +1840,10 @@
             <summary>
               J. Waktu Tanggap Darurat di IGD
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalJ">0.00</span></span
+                >Nilai : <span id="subTotal_212_J">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupJ">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1790,10 +1856,10 @@
                       >
                       <input
                         type="number"
-                        id="input_j1_real"
+                        id="real_212_J"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('212_J')"
                         placeholder="0"
                       />
                     </div>
@@ -1804,16 +1870,16 @@
                       >
                       <input
                         type="number"
-                        id="input_j1_target"
+                        id="target_212_J"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupJ()"
+                        oninput="hitungSkorOtomatis('212_J')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_J1">0</div>
+                <div class="q-score" id="skor_212_J">0</div>
               </li>
             </ul>
           </details>
@@ -1823,10 +1889,10 @@
             <summary>
               K. Net Death Rate
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalK">0.00</span></span
+                >Nilai : <span id="subTotal_212_K">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupK">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1836,10 +1902,10 @@
                       <label>Jumlah kematian pasien > 48 jam perawatan :</label>
                       <input
                         type="number"
-                        id="input_k1_real"
+                        id="real_212_K"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupK()"
+                        oninput="hitungSkorOtomatis('212_K')"
                         placeholder="0"
                       />
                     </div>
@@ -1850,16 +1916,16 @@
                       >
                       <input
                         type="number"
-                        id="input_k1_target"
+                        id="target_212_K"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupK()"
+                        oninput="hitungSkorOtomatis('212_K')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_K1">0</div>
+                <div class="q-score" id="skor_212_K">0</div>
               </li>
             </ul>
           </details>
@@ -1875,22 +1941,30 @@
         <div class="h-row lvl-2">
           <div class="h-num">3.1</div>
           <div class="h-text">KINERJA MUTU DAN MANFAAT BAGI MASYARAKAT</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_31_Total">0.00</span></span
+          >
         </div>
+
+        <!--------------------------- Point 311 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">3.1.1</div>
             <div class="h-text">SubAspek Mutu Layanan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_311_Total">0.00</span></span
+            >
           </summary>
 
-          <!-- Point A3.1.1 -->
+          <!-- Point 311_A -->
           <details>
             <summary>
               A. Emergency Response Time Rate
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA2">0.00</span></span
+                >Nilai : <span id="subTotal_311_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1904,29 +1978,29 @@
                       >
                       <input
                         type="number"
-                        id="input_a2_1_single"
+                        id="real_311_A"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupA2()"
+                        oninput="hitungSkorOtomatis('311_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_A2_1">0</div>
+                <div class="q-score" id="skor_311_A">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point B3.1.1 -->
+          <!-- Point 311_B -->
           <details>
             <summary>
               B. Waktu Tunggu Rawat Jalan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB2">0.00</span></span
+                >Nilai : <span id="subTotal_311_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1939,29 +2013,29 @@
                       >
                       <input
                         type="number"
-                        id="input_b2_1_single"
+                        id="real_311_B"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupB2()"
+                        oninput="hitungSkorOtomatis('311_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_B2_1">0</div>
+                <div class="q-score" id="skor_311_B">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point C3.1.1 -->
+          <!-- Point 311_C -->
           <details>
             <summary>
               C. Length of Stay
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC2">0.00</span></span
+                >Nilai : <span id="subTotal_311_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -1971,10 +2045,10 @@
                       <label>Jumlah lama pasien dirawat :</label>
                       <input
                         type="number"
-                        id="input_c2_1_real"
+                        id="real_311_C"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupC2()"
+                        oninput="hitungSkorOtomatis('311_C')"
                         placeholder="0"
                       />
                     </div>
@@ -1982,29 +2056,29 @@
                       <label>Jumlah pasien keluar :</label>
                       <input
                         type="number"
-                        id="input_c2_1_target"
+                        id="target_311_C"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupC2()"
+                        oninput="hitungSkorOtomatis('311_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_C2_1">0</div>
+                <div class="q-score" id="skor_311_C">0</div>
               </li>
             </ul>
           </details>
 
-          <!-- Point D3.1.1 -->
+          <!-- Point 311_D -->
           <details>
             <summary>
               D. Kecepatan Pelayanan Resep Obat Jadi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalD2">0.00</span></span
+                >Nilai : <span id="subTotal_311_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupD2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2017,16 +2091,16 @@
                       >
                       <input
                         type="number"
-                        id="input_d2_1_single"
+                        id="real_311_D"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupD2()"
+                        oninput="hitungSkorOtomatis('311_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_D2_1">0</div>
+                <div class="q-score" id="skor_311_D">0</div>
               </li>
             </ul>
           </details>
@@ -2036,10 +2110,10 @@
             <summary>
               E. Waktu Tunggu Sebelum Operasi/Penundaan Operasi Efektif
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE2">0.00</span></span
+                >Nilai : <span id="subTotal_311_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2054,10 +2128,10 @@
                       >
                       <input
                         type="number"
-                        id="input_e2_1_real"
+                        id="real_311_E"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupE2()"
+                        oninput="hitungSkorOtomatis('311_E')"
                         placeholder="0"
                       />
                     </div>
@@ -2065,16 +2139,16 @@
                       <label>Jumlah pasien yang operasi efektif :</label>
                       <input
                         type="number"
-                        id="input_e2_1_target"
+                        id="target_311_E"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupE2()"
+                        oninput="hitungSkorOtomatis('311_E')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_E2_1">0</div>
+                <div class="q-score" id="skor_311_E">0</div>
               </li>
             </ul>
           </details>
@@ -2084,10 +2158,10 @@
             <summary>
               F. Waktu Tunggu Hasil Laboratorium
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF2">0.00</span></span
+                >Nilai : <span id="subTotal_311_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2100,16 +2174,16 @@
                       >
                       <input
                         type="number"
-                        id="input_f2_1_single"
+                        id="real_311_F"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupF2()"
+                        oninput="hitungSkorOtomatis('311_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_F2_1">0</div>
+                <div class="q-score" id="skor_311_F">0</div>
               </li>
             </ul>
           </details>
@@ -2119,10 +2193,10 @@
             <summary>
               G. Waktu Tunggu Hasil Radiologi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalG2">0.00</span></span
+                >Nilai : <span id="subTotal_311_G">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupG2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2135,16 +2209,16 @@
                       >
                       <input
                         type="number"
-                        id="input_g2_1_single"
+                        id="real_311_G"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupG2()"
+                        oninput="hitungSkorOtomatis('311_G')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_G2_1">0</div>
+                <div class="q-score" id="skor_311_G">0</div>
               </li>
             </ul>
           </details>
@@ -2154,10 +2228,10 @@
             <summary>
               H. Rujukan Keluar Rawat Inap
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalH2">0.00</span></span
+                >Nilai : <span id="subTotal_311_H">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupH2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2170,10 +2244,10 @@
                       >
                       <input
                         type="number"
-                        id="input_h2_1_real"
+                        id="real_311_H"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupH2()"
+                        oninput="hitungSkorOtomatis('311_H')"
                         placeholder="0"
                       />
                     </div>
@@ -2184,16 +2258,16 @@
                       >
                       <input
                         type="number"
-                        id="input_h2_1_target"
+                        id="target_311_H"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupH2()"
+                        oninput="hitungSkorOtomatis('311_H')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_H2_1">0</div>
+                <div class="q-score" id="skor_311_H">0</div>
               </li>
             </ul>
           </details>
@@ -2203,10 +2277,10 @@
             <summary>
               I. Retensi Pelanggan Rawat Jalan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalI2">0.00</span></span
+                >Nilai : <span id="subTotal_311_I">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupI2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2216,10 +2290,10 @@
                       <label>Jumlah pasien lama rawat jalan :</label>
                       <input
                         type="number"
-                        id="input_i2_1_real"
+                        id="real_311_I"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupI2()"
+                        oninput="hitungSkorOtomatis('311_I')"
                         placeholder="0"
                       />
                     </div>
@@ -2227,16 +2301,16 @@
                       <label>Jumlah pasien rawat jalan :</label>
                       <input
                         type="number"
-                        id="input_i2_1_target"
+                        id="target_311_I"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupI2()"
+                        oninput="hitungSkorOtomatis('311_I')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_I2_1">0</div>
+                <div class="q-score" id="skor_311_I">0</div>
               </li>
             </ul>
           </details>
@@ -2246,10 +2320,10 @@
             <summary>
               J. Pasien Pulang Paksa (Atas Permintaan Sendiri)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalJ2">0.00</span></span
+                >Nilai : <span id="subTotal_311_J">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupJ2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2262,10 +2336,10 @@
                       >
                       <input
                         type="number"
-                        id="input_j2_1_real"
+                        id="real_311_J"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupJ2()"
+                        oninput="hitungSkorOtomatis('311_J')"
                         placeholder="0"
                       />
                     </div>
@@ -2273,16 +2347,16 @@
                       <label>Jumlah pasien keluar rumah sakit :</label>
                       <input
                         type="number"
-                        id="input_j2_1_target"
+                        id="target_311_J"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupJ2()"
+                        oninput="hitungSkorOtomatis('311_J')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_J2_1">0</div>
+                <div class="q-score" id="skor_311_J">0</div>
               </li>
             </ul>
           </details>
@@ -2292,10 +2366,10 @@
             <summary>
               K. Kepatuhan Kebersihan Tangan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalK2">0.00</span></span
+                >Nilai : <span id="subTotal_311_K">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupK2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2308,10 +2382,10 @@
                       >
                       <input
                         type="number"
-                        id="input_k2_1_real"
+                        id="real_311_K"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupK2()"
+                        oninput="hitungSkorOtomatis('311_K')"
                         placeholder="0"
                       />
                     </div>
@@ -2322,16 +2396,16 @@
                       >
                       <input
                         type="number"
-                        id="input_k2_1_target"
+                        id="target_311_K"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupK2()"
+                        oninput="hitungSkorOtomatis('311_K')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_K2_1">0</div>
+                <div class="q-score" id="skor_311_K">0</div>
               </li>
             </ul>
           </details>
@@ -2341,10 +2415,10 @@
             <summary>
               L. Kepatuhan Penggunaan Alat Pelindung Diri
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalL2">0.00</span></span
+                >Nilai : <span id="subTotal_311_L">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupL2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2356,10 +2430,10 @@
                       <label>Jumlah petugas yang menggunakan APD :</label>
                       <input
                         type="number"
-                        id="input_l2_1_real"
+                        id="real_311_L"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupL2()"
+                        oninput="hitungSkorOtomatis('311_L')"
                         placeholder="0"
                       />
                     </div>
@@ -2370,16 +2444,16 @@
                       >
                       <input
                         type="number"
-                        id="input_l2_1_target"
+                        id="target_311_L"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupL2()"
+                        oninput="hitungSkorOtomatis('311_L')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_L2_1">0</div>
+                <div class="q-score" id="skor_311_L">0</div>
               </li>
             </ul>
           </details>
@@ -2389,10 +2463,10 @@
             <summary>
               M. Kepatuhan Identifikasi Pasien
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalM2">0.00</span></span
+                >Nilai : <span id="subTotal_311_M">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupM2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2405,10 +2479,10 @@
                       >
                       <input
                         type="number"
-                        id="input_m2_1_real"
+                        id="real_311_M"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupM2()"
+                        oninput="hitungSkorOtomatis('311_M')"
                         placeholder="0"
                       />
                     </div>
@@ -2416,16 +2490,16 @@
                       <label>Jumlah pemberi layanan :</label>
                       <input
                         type="number"
-                        id="input_m2_1_target"
+                        id="target_311_M"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupM2()"
+                        oninput="hitungSkorOtomatis('311_M')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_M2_1">0</div>
+                <div class="q-score" id="skor_311_M">0</div>
               </li>
             </ul>
           </details>
@@ -2435,10 +2509,10 @@
             <summary>
               N. Waktu Tanggap Operasi Seksio Sesarea Emergensi
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalN2">0.00</span></span
+                >Nilai : <span id="subTotal_311_N">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupN2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2453,10 +2527,10 @@
                       >
                       <input
                         type="number"
-                        id="input_n2_1_real"
+                        id="real_311_N"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupN2()"
+                        oninput="hitungSkorOtomatis('311_N')"
                         placeholder="0"
                       />
                     </div>
@@ -2467,16 +2541,16 @@
                       >
                       <input
                         type="number"
-                        id="input_n2_1_target"
+                        id="target_311_N"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupN2()"
+                        oninput="hitungSkorOtomatis('311_N')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_N2_1">0</div>
+                <div class="q-score" id="skor_311_N">0</div>
               </li>
             </ul>
           </details>
@@ -2486,10 +2560,10 @@
             <summary>
               O. Kepatuhan Waktu Visite Dokter
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalO2">0.00</span></span
+                >Nilai : <span id="subTotal_311_O">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupO2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2502,10 +2576,10 @@
                       >
                       <input
                         type="number"
-                        id="input_o2_1_real"
+                        id="real_311_O"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupO2()"
+                        oninput="hitungSkorOtomatis('311_O')"
                         placeholder="0"
                       />
                     </div>
@@ -2513,16 +2587,16 @@
                       <label>Jumlah pasien yang diobservasi :</label>
                       <input
                         type="number"
-                        id="input_o2_1_target"
+                        id="target_311_O"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupO2()"
+                        oninput="hitungSkorOtomatis('311_O')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_O2_1">0</div>
+                <div class="q-score" id="skor_311_O">0</div>
               </li>
             </ul>
           </details>
@@ -2532,10 +2606,10 @@
             <summary>
               P. Kepatuhan Terhadap Alur Klinis (Clinical Pathway)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalP2">0.00</span></span
+                >Nilai : <span id="subTotal_311_P">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupP2">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2550,10 +2624,10 @@
                       >
                       <input
                         type="number"
-                        id="input_p2_1_real"
+                        id="real_311_P"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupP2()"
+                        oninput="hitungSkorOtomatis('311_P')"
                         placeholder="0"
                       />
                     </div>
@@ -2561,25 +2635,29 @@
                       <label>Jumlah seluruh pelayanan oleh KPA :</label>
                       <input
                         type="number"
-                        id="input_p2_1_target"
+                        id="target_311_P"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupP2()"
+                        oninput="hitungSkorOtomatis('311_P')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_P2_1">0</div>
+                <div class="q-score" id="skor_311_P">0</div>
               </li>
             </ul>
           </details>
         </details>
-        <!-- Point 3.1.2 -->
+
+        <!--------------------------- Point 312 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">3.1.2</div>
             <div class="h-text">Sub Aspek Mutu Klinik</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_312_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A3.1.2 -->
@@ -2587,10 +2665,10 @@
             <summary>
               A. Angka Kematian di Gawat Darurat
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_312_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2603,10 +2681,10 @@
                       >
                       <input
                         type="number"
-                        id="input_a1_real"
+                        id="real_312_A"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('312_A')"
                         placeholder="0"
                       />
                     </div>
@@ -2614,16 +2692,16 @@
                       <label>Jumlah pasien yang dilayani di UGD :</label>
                       <input
                         type="number"
-                        id="input_a1_target"
+                        id="target_312_A"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('312_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_312_A">0</div>
               </li>
             </ul>
           </details>
@@ -2633,10 +2711,10 @@
             <summary>
               B. Angka Kematian/Kebutaan > 48 jam
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
+                >Nilai : <span id="subTotal_312_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2649,10 +2727,10 @@
                       >
                       <input
                         type="number"
-                        id="input_b1_real"
+                        id="real_312_B"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('312_B')"
                         placeholder="0"
                       />
                     </div>
@@ -2662,16 +2740,16 @@
                       >
                       <input
                         type="number"
-                        id="input_b1_target"
+                        id="target_312_B"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('312_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_B1">0</div>
+                <div class="q-score" id="skor_312_B">0</div>
               </li>
             </ul>
           </details>
@@ -2681,10 +2759,10 @@
             <summary>
               C. Post Operative Death Rate
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
+                >Nilai : <span id="subTotal_312_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2694,10 +2772,10 @@
                       <label>Jumlah pasien operasi yang meninggal :</label>
                       <input
                         type="number"
-                        id="input_c1_real"
+                        id="real_312_C"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('312_C')"
                         placeholder="0"
                       />
                     </div>
@@ -2705,16 +2783,16 @@
                       <label>Jumlah pasien yang dioperasi :</label>
                       <input
                         type="number"
-                        id="input_c1_target"
+                        id="target_312_C"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('312_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_C1">0</div>
+                <div class="q-score" id="skor_312_C">0</div>
               </li>
             </ul>
           </details>
@@ -2724,10 +2802,10 @@
             <summary>
               D. Angka Infeksi Nosokomial Dekubitus
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalD">0.00</span></span
+                >Nilai : <span id="subTotal_312_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupD">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2740,10 +2818,10 @@
                       >
                       <input
                         type="number"
-                        id="input_d1_real"
+                        id="real_312_D"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('312_D')"
                         placeholder="0"
                       />
                     </div>
@@ -2751,16 +2829,16 @@
                       <label>Jumlah pasien yang dirawat :</label>
                       <input
                         type="number"
-                        id="input_d1_target"
+                        id="target_312_D"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('312_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_D1">0</div>
+                <div class="q-score" id="skor_312_D">0</div>
               </li>
             </ul>
           </details>
@@ -2770,10 +2848,10 @@
             <summary>
               E. Angka Infeksi Nosokomial Phlebitis
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_312_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2786,10 +2864,10 @@
                       >
                       <input
                         type="number"
-                        id="input_e1_real"
+                        id="real_312_E"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('312_E')"
                         placeholder="0"
                       />
                     </div>
@@ -2797,16 +2875,16 @@
                       <label>Jumlah pasien yang dirawat :</label>
                       <input
                         type="number"
-                        id="input_e1_target"
+                        id="target_312_E"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('312_E')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_E1">0</div>
+                <div class="q-score" id="skor_312_E">0</div>
               </li>
             </ul>
           </details>
@@ -2816,10 +2894,10 @@
             <summary>
               F. Angka Infeksi Nosokomial Saluran Kemih (ISK)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
+                >Nilai : <span id="subTotal_312_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2834,10 +2912,10 @@
                       >
                       <input
                         type="number"
-                        id="input_f1_real"
+                        id="real_312_F"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('312_F')"
                         placeholder="0"
                       />
                     </div>
@@ -2845,16 +2923,16 @@
                       <label>Jumlah pasien yang dirawat :</label>
                       <input
                         type="number"
-                        id="input_f1_target"
+                        id="target_312_F"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('312_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_F1">0</div>
+                <div class="q-score" id="skor_312_F">0</div>
               </li>
             </ul>
           </details>
@@ -2864,10 +2942,10 @@
             <summary>
               G. Angka Infeksi Nosokomial Luka Operasi (ILO)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalG">0.00</span></span
+                >Nilai : <span id="subTotal_312_G">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupG">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2882,10 +2960,10 @@
                       >
                       <input
                         type="number"
-                        id="input_g1_real"
+                        id="real_312_G"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('312_G')"
                         placeholder="0"
                       />
                     </div>
@@ -2893,16 +2971,16 @@
                       <label>Jumlah pasien yang dirawat :</label>
                       <input
                         type="number"
-                        id="input_g1_target"
+                        id="target_312_G"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupG()"
+                        oninput="hitungSkorOtomatis('312_G')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_G1">0</div>
+                <div class="q-score" id="skor_312_G">0</div>
               </li>
             </ul>
           </details>
@@ -2912,10 +2990,10 @@
             <summary>
               H. Angka Kematian Ibu di Rumah Sakit
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalH">0.00</span></span
+                >Nilai : <span id="subTotal_312_H">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupH">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2928,10 +3006,10 @@
                       >
                       <input
                         type="number"
-                        id="input_h1_real"
+                        id="real_312_H"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('312_H')"
                         placeholder="0"
                       />
                     </div>
@@ -2942,26 +3020,29 @@
                       >
                       <input
                         type="number"
-                        id="input_h1_target"
+                        id="target_312_H"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupH()"
+                        oninput="hitungSkorOtomatis('312_H')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_H1">0</div>
+                <div class="q-score" id="skor_312_H">0</div>
               </li>
             </ul>
           </details>
         </details>
 
-        <!-- Point 3.1.3 -->
+        <!--------------------------- Point 313 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">3.1.3</div>
             <div class="h-text">Sub Aspek Kepedulian Pada Masyarakat</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_313_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A3.1.3 -->
@@ -2969,10 +3050,10 @@
             <summary>
               A. Rasio Tempat Tidur Kelas III (RTT)
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_313_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -2982,10 +3063,10 @@
                       <label>Jumlah tempat tidur perawatan kelas III :</label>
                       <input
                         type="number"
-                        id="input_a1_real"
+                        id="real_313_A"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('313_A')"
                         placeholder="0"
                       />
                     </div>
@@ -2993,16 +3074,16 @@
                       <label>Jumlah seluruh tempat tidur perawatan :</label>
                       <input
                         type="number"
-                        id="input_a1_target"
+                        id="target_313_A"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('313_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_313_A">0</div>
               </li>
             </ul>
           </details>
@@ -3012,10 +3093,10 @@
             <summary>
               B. Kecepatan Waktu Tanggapi Komplain
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalB">0.00</span></span
+                >Nilai : <span id="subTotal_313_B">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3028,10 +3109,10 @@
                       >
                       <input
                         type="number"
-                        id="input_b1_real"
+                        id="real_313_B"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('313_B')"
                         placeholder="0"
                       />
                     </div>
@@ -3039,16 +3120,16 @@
                       <label>Jumlah komplain yang di survei :</label>
                       <input
                         type="number"
-                        id="input_b1_target"
+                        id="target_313_B"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('313_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_B1">0</div>
+                <div class="q-score" id="skor_313_B">0</div>
               </li>
             </ul>
           </details>
@@ -3058,10 +3139,10 @@
             <summary>
               C. Kepuasan Pasien
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalC">0.00</span></span
+                >Nilai : <span id="subTotal_313_C">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3073,10 +3154,10 @@
                       >
                       <input
                         type="number"
-                        id="input_c1_real"
+                        id="real_313_C"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('313_C')"
                         placeholder="0"
                       />
                     </div>
@@ -3086,16 +3167,16 @@
                       >
                       <input
                         type="number"
-                        id="input_c1_target"
+                        id="target_313_C"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('313_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_C1">0</div>
+                <div class="q-score" id="skor_313_C">0</div>
               </li>
             </ul>
           </details>
@@ -3106,10 +3187,10 @@
               D. Pembinaan kepada Pusat Pelayanan Masyarakat dan Sarana
               Kesehatan Lain
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_313_D">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3117,21 +3198,26 @@
                     Pembinaan kepada Pusat Pelayanan Masyarakat dan Sarana
                     Kesehatan Lain
                   </div>
-                  <select onchange="hitungGrupE()">
+                  <select
+                    id="select_313_D"
+                    onchange="hitungSkorOtomatis('313_D')"
+                  >
                     <option value="1" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak ada program</option>
-                    <option value="0">2. Ada program tidak dilaksanakan</option>
-                    <option value="0">
+                    <option value="0.25">1. Tidak ada program</option>
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="0.75">
                       3. Ada program sebagian dilaksanakan
                     </option>
-                    <option value="0">
+                    <option value="1">
                       4. Ada program yang dilaksanakan semua
                     </option>
                   </select>
                 </div>
-                <div class="q-score" style="color: #94a3b8">-</div>
+                <div class="q-score" id="skor_313_D">-</div>
               </li>
             </ul>
           </details>
@@ -3141,29 +3227,34 @@
             <summary>
               E. Penyuluhan Kesehatan
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalE">0.00</span></span
+                >Nilai : <span id="subTotal_313_E">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">Penyuluhan Kesehatan</div>
-                  <select onchange="hitungGrupE()">
+                  <select
+                    id="select_313_E"
+                    onchange="hitungSkorOtomatis('313_E')"
+                  >
                     <option value="1" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak ada program</option>
-                    <option value="0">2. Ada program tidak dilaksanakan</option>
-                    <option value="0">
+                    <option value="0.25">1. Tidak ada program</option>
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="0.75">
                       3. Ada program sebagian dilaksanakan
                     </option>
-                    <option value="0">
+                    <option value="1">
                       4. Ada program yang dilaksanakan semua
                     </option>
                   </select>
                 </div>
-                <div class="q-score" style="color: #94a3b8">-</div>
+                <div class="q-score" id="skor_313_E">-</div>
               </li>
             </ul>
           </details>
@@ -3173,10 +3264,10 @@
             <summary>
               F. Kepatuhan Upaya Pencegahan Risiko Pasien Jatuh
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalF">0.00</span></span
+                >Nilai : <span id="subTotal_313_F">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupF">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3191,10 +3282,10 @@
                       >
                       <input
                         type="number"
-                        id="input_f1_real"
+                        id="real_313_F"
                         class="val-realisasi"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('313_F')"
                         placeholder="0"
                       />
                     </div>
@@ -3205,26 +3296,29 @@
                       >
                       <input
                         type="number"
-                        id="input_f1_target"
+                        id="target_313_F"
                         class="val-target"
                         min="0"
-                        oninput="hitungGrupF()"
+                        oninput="hitungSkorOtomatis('313_F')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score" id="score_F1">0</div>
+                <div class="q-score" id="skor_313_F">0</div>
               </li>
             </ul>
           </details>
         </details>
 
-        <!-- Point 3.1.4 -->
+        <!--------------------------- Point 314 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">3.1.4</div>
             <div class="h-text">Sub Aspek Kepedulian Terhadap Lingkungan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_314_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A3.1.4 -->
@@ -3232,25 +3326,28 @@
             <summary>
               A. Pengolahan Baku Mutu Limbah Cair
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="skor_314_A_Total">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">
                     Biochemical Oxygen Demand (BOD) < 30mg/l
                   </div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
+                  <select
+                    id="select_314_A1"
+                    onchange="hitungSkorOtomatis('314_A1')"
+                  >
+                    <option value="0" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak</option>
-                    <option value="0">2. Ya</option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
                   </select>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_314_A1">0</div>
               </li>
               <li class="question-item formula-type">
                 <div class="q-number">2</div>
@@ -3258,15 +3355,18 @@
                   <div class="q-title">
                     Chemical Oxygen Demand (COD) < 80mg/l
                   </div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
+                  <select
+                    id="select_314_A2"
+                    onchange="hitungSkorOtomatis('314_A2')"
+                  >
+                    <option value="0" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak</option>
-                    <option value="0">2. Ya</option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
                   </select>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_314_A2">0</div>
               </li>
               <li class="question-item formula-type">
                 <div class="q-number">3</div>
@@ -3274,39 +3374,48 @@
                   <div class="q-title">
                     Total suspended Solids (TSS) < 30mg/l
                   </div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
+                  <select
+                    id="select_314_A3"
+                    onchange="hitungSkorOtomatis('314_A3')"
+                  >
+                    <option value="0" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak</option>
-                    <option value="0">2. Ya</option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
                   </select>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_314_A3">0</div>
               </li>
               <li class="question-item formula-type">
                 <div class="q-number">4</div>
                 <div class="q-content">
                   <div class="q-title">Potential Hidrogen (PH) 6-9</div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
+                  <select
+                    id="select_314_A4"
+                    onchange="hitungSkorOtomatis('314_A4')"
+                  >
+                    <option value="0" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Tidak</option>
-                    <option value="0">2. Ya</option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
                   </select>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_314_A4">0</div>
               </li>
             </ul>
           </details>
         </details>
 
-        <!-- Point 3.1.5 -->
+        <!--------------------------- Point 315 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">3.1.5</div>
             <div class="h-text">Sub Aspek Akreditasi</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_315_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A3.1.5 -->
@@ -3314,25 +3423,28 @@
             <summary>
               A. Akreditasi Rumah Sakit
               <span class="score-badge"
-                >Sub-Total: <span id="subTotalA">0.00</span></span
+                >Nilai : <span id="subTotal_315_A">0.00</span></span
               >
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
                   <div class="q-title">Akreditasi Rumah Sakit</div>
-                  <select onchange="hitungGrupE()">
-                    <option value="1" style="text-align: center">
+                  <select
+                    id="select_315_A"
+                    onchange="hitungSkorOtomatis('315_A')"
+                  >
+                    <option value="0" style="text-align: center">
                       -- Pilih Jawaban --
                     </option>
-                    <option value="1">1. Kategori Perdana</option>
-                    <option value="0">2. Kategori Madya</option>
-                    <option value="0">3. Kategori Utama</option>
-                    <option value="0">4. Kategori Paripurna</option>
+                    <option value="0.25">1. Kategori Perdana</option>
+                    <option value="0.5">2. Kategori Madya</option>
+                    <option value="0.75">3. Kategori Utama</option>
+                    <option value="1">4. Kategori Paripurna</option>
                   </select>
                 </div>
-                <div class="q-score" id="score_A1">0</div>
+                <div class="q-score" id="skor_315_A">0</div>
               </li>
             </ul>
           </details>
@@ -3348,7 +3460,12 @@
         <div class="h-row lvl-2">
           <div class="h-num">4.1</div>
           <div class="h-text">KINERJA PERSPEKTIF KEUANGAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_41_Total">0.00</span></span
+          >
         </div>
+
+        <!--------------------------- Point 411 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">4.1.1</div>
@@ -3356,6 +3473,9 @@
               Sub Kinerja Aspek Perolehan Hasil Usaha atau Hasil Kerja dari
               Layanan yang Diberikan.
             </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_411_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A -->
@@ -3363,11 +3483,11 @@
             <summary>
               A. Periode Penagihan Piutang (Collection Period)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalA">0.00</span>
+                Nilai : <span id="subTotal_411_A">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3381,8 +3501,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_411_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('411_A')"
                         placeholder="0"
                       />
                     </div>
@@ -3392,15 +3513,16 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_411_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('411_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_411_A">0</div>
               </li>
             </ul>
           </details>
@@ -3410,11 +3532,11 @@
             <summary>
               B. Perputaran Aset Tetap (Fixed Asset Turnover)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalB">0.00</span>
+                Nilai : <span id="subTotal_411_B">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3428,8 +3550,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_411_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('411_B')"
                         placeholder="0"
                       />
                     </div>
@@ -3439,15 +3562,16 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_411_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('411_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_411_B">0</div>
               </li>
             </ul>
           </details>
@@ -3457,11 +3581,11 @@
             <summary>
               C. Perputaran Persediaan (Inventory Turnover)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalC">0.00</span>
+                Nilai : <span id="subTotal_411_C">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupC">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3475,8 +3599,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_411_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('411_C')"
                         placeholder="0"
                       />
                     </div>
@@ -3486,15 +3611,16 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_411_C"
                         min="0"
-                        oninput="hitungGrupC()"
+                        oninput="hitungSkorOtomatis('411_C')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_411_C">0</div>
               </li>
             </ul>
           </details>
@@ -3504,11 +3630,11 @@
             <summary>
               D. Imbalan atas Aset Tetap (Return on Fixed Asset)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalD">0.00</span>
+                Nilai : <span id="subTotal_411_D">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupD">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3522,8 +3648,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_411_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('411_D')"
                         placeholder="0"
                       />
                     </div>
@@ -3533,15 +3660,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_411_D"
                         min="0"
-                        oninput="hitungGrupD()"
+                        oninput="hitungSkorOtomatis('411_D')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_411_D">0</div>
               </li>
             </ul>
           </details>
@@ -3551,11 +3678,11 @@
             <summary>
               E. Imbalan atas Ekuitas (Return on Equity)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalE">0.00</span>
+                Nilai : <span id="subTotal_411_E">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupE">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3569,8 +3696,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_411_E"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('411_E')"
                         placeholder="0"
                       />
                     </div>
@@ -3580,25 +3708,30 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_411_E"
                         min="0"
-                        oninput="hitungGrupE()"
+                        oninput="hitungSkorOtomatis('411_E')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_411_E">0</div>
               </li>
             </ul>
           </details>
         </details>
+
+        <!--------------------------- Point 412 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">4.1.2</div>
             <div class="h-text">
               Sub Kinerja Memenuhi Seluruh Kewajiban Jangka Pendeknya
             </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_412_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A -->
@@ -3606,10 +3739,10 @@
             <summary>
               A. Rasio Kas (Cash Ratio)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalA">0.00</span>
+                Nilai : <span id="subTotal_412_A">0.00</span>
               </span>
             </summary>
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
                 <div class="q-content">
@@ -3620,8 +3753,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_412_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('412_A')"
                         placeholder="0"
                       />
                     </div>
@@ -3630,14 +3764,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_412_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('412_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_412_A">0</div>
               </li>
             </ul>
           </details>
@@ -3647,11 +3782,11 @@
             <summary>
               B. Rasio Lancar (Current Ratio)
               <span class="score-badge">
-                Sub-Total: <span id="subTotalB">0.00</span>
+                Nilai : <span id="subTotal_412_B">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
 
@@ -3664,8 +3799,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_412_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('412_B')"
                         placeholder="0"
                       />
                     </div>
@@ -3675,23 +3811,29 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_412_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('412_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_412_B">0</div>
               </li>
             </ul>
           </details>
         </details>
+
+        <!--------------------------- Point 413 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">4.1.3</div>
             <div class="h-text">Sub Kinerja Memenuhi Seluruh Kewajiban</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_413_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A -->
@@ -3699,11 +3841,11 @@
             <summary>
               A. Rasio Kewajiban terhadap Aset
               <span class="score-badge">
-                Sub-Total: <span id="subTotalA">0.00</span>
+                Nilai : <span id="subTotal_413_A">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
 
@@ -3716,8 +3858,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_413_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('413_A')"
                         placeholder="0"
                       />
                     </div>
@@ -3727,15 +3870,16 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_413_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('413_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_413_A">0</div>
               </li>
             </ul>
           </details>
@@ -3745,11 +3889,11 @@
             <summary>
               B. Rasio Kewajiban terhadap Ekuitas
               <span class="score-badge">
-                Sub-Total: <span id="subTotalB">0.00</span>
+                Nilai : <span id="subTotal_413_B">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
 
@@ -3762,8 +3906,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_413_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('413_B')"
                         placeholder="0"
                       />
                     </div>
@@ -3773,19 +3918,21 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_413_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('413_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_413_B">0</div>
               </li>
             </ul>
           </details>
         </details>
 
+        <!--------------------------- Point 414 ---------------------------------->
         <details class="details-parent">
           <summary class="summary-clean summary-parent">
             <div class="h-num">4.1.4</div>
@@ -3793,6 +3940,9 @@
               Sub Kinerja Kemampuan Penerimaan dari Jasa Layanan untuk Membiayai
               Pengeluaran
             </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_414_Total">0.00</span></span
+            >
           </summary>
 
           <!-- Point A -->
@@ -3801,11 +3951,11 @@
               A. Rasio Pendapatan BLUD non APBD-LO terhadap Biaya Operasional /
               Cost Recovery Rate
               <span class="score-badge">
-                Sub-Total: <span id="subTotalA">0.00</span>
+                Nilai : <span id="subTotal_414_A">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupA">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
 
@@ -3821,8 +3971,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_414_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('414_A')"
                         placeholder="0"
                       />
                     </div>
@@ -3832,15 +3983,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_414_A"
                         min="0"
-                        oninput="hitungGrupA()"
+                        oninput="hitungSkorOtomatis('414_A')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_414_A">0</div>
               </li>
             </ul>
           </details>
@@ -3850,11 +4001,11 @@
             <summary>
               B. Porsi Pendapatan APBD-LO dibandingkan Pendapatan non APBD-LO
               <span class="score-badge">
-                Sub-Total: <span id="subTotalB">0.00</span>
+                Nilai : <span id="subTotal_414_B">0.00</span>
               </span>
             </summary>
 
-            <ul class="question-list" id="groupB">
+            <ul class="question-list">
               <li class="question-item formula-type">
                 <div class="q-number">1</div>
 
@@ -3869,8 +4020,9 @@
                       <input
                         type="number"
                         class="val-realisasi"
+                        id="real_414_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('414_B')"
                         placeholder="0"
                       />
                     </div>
@@ -3880,15 +4032,15 @@
                       <input
                         type="number"
                         class="val-target"
+                        id="target_414_B"
                         min="0"
-                        oninput="hitungGrupB()"
+                        oninput="hitungSkorOtomatis('414_B')"
                         placeholder="0"
                       />
                     </div>
                   </div>
                 </div>
-
-                <div class="q-score">0</div>
+                <div class="q-score" id="skor_414_B">0</div>
               </li>
             </ul>
           </details>
@@ -3899,12 +4051,12 @@
       <div class="total-panel">
         <h3>TOTAL NILAI KINERJA RSUD</h3>
         <div class="total-score" id="grandTotal">0.00</div>
+        <div class="predikat-score" style="font-weight: bold; margin-top: 5px">
+          Predikat: <span id="predikatGrandTotal">-</span>
+        </div>
       </div>
 
-      <div class="btn-group">
-        <button class="btn-pdf" onclick="exportToPDF()">
-          📄 Unduh PDF Laporan
-        </button>
+      <div class="btn-group no-print">
         <button class="btn-excel" onclick="exportToExcel()">
           📊 Unduh Excel Laporan
         </button>
@@ -3913,199 +4065,11 @@
         </button>
       </div>
     </div>
-
-    <script>
-      // Variabel Global untuk menyimpan total masing-masing grup secara independen
-      let totalGrupB = 0;
-      let totalGrupC = 0;
-
-      // ==========================================
-      // FUNGSI KHUSUS MENGHITUNG GRUP A
-      // ==========================================
-      function hitungGrupA() {
-        totalGrupA = 0; // Kembalikan ke 0 sebelum menghitung ulang
-        const items = document.querySelectorAll("#groupA .question-item");
-
-        items.forEach((item) => {
-          let itemScore = 0;
-          const scoreBox = item.querySelector(".q-score");
-          if (!scoreBox) return;
-
-          // Logika Input Manual Bersyarat (Rumus Grup A)
-          if (item.classList.contains("formula-type")) {
-            const elRealisasi = item.querySelector(".val-realisasi");
-            const elTarget = item.querySelector(".val-target");
-
-            if (elRealisasi && elTarget) {
-              const valReal = parseFloat(elRealisasi.value) || 0;
-              const valTarget = parseFloat(elTarget.value) || 0;
-
-              // Reset styling kotak kanan menjadi normal
-              scoreBox.style.color = "var(--success)";
-              scoreBox.style.backgroundColor = "#f1f5f9";
-              scoreBox.style.border = "1px solid var(--border)";
-              scoreBox.style.fontSize = "16px";
-
-              if (valTarget === 0) {
-                itemScore = 0;
-                scoreBox.innerText = "0";
-              } else {
-                const rasio = valReal / valTarget;
-
-                // Penerapan Logika IF Bertingkat Excel
-                if (rasio <= 0.2) {
-                  itemScore = 0;
-                  scoreBox.innerText = "0";
-                } else if (rasio <= 0.4) {
-                  itemScore = 0.4;
-                  scoreBox.innerText = "0.4";
-                } else if (rasio <= 0.6) {
-                  itemScore = 0.8;
-                  scoreBox.innerText = "0.8";
-                } else if (rasio <= 0.8) {
-                  itemScore = 1.2;
-                  scoreBox.innerText = "1.2";
-                } else if (rasio <= 1) {
-                  itemScore = 1.6;
-                  scoreBox.innerText = "1.6";
-                } else if (rasio > 1) {
-                  itemScore = 2;
-                  scoreBox.innerText = "2";
-                }
-              }
-            }
-          }
-
-          totalGrupA += itemScore;
-        });
-
-        // Tampilkan Sub Total Grup A
-        document.getElementById("subTotalA").innerText = totalGrupA.toFixed(2);
-
-        // Perbarui Total Keseluruhan
-        hitungTotalAkhir();
-      }
-
-      // ==========================================
-      // FUNGSI KHUSUS MENGHITUNG GRUP B
-      // ==========================================
-      function hitungGrupB() {
-        totalGrupB = 0; // Kembalikan ke 0 sebelum menghitung ulang
-        const items = document.querySelectorAll("#groupB .question-item");
-
-        items.forEach((item) => {
-          let itemScore = 0;
-          const scoreBox = item.querySelector(".q-score");
-          if (!scoreBox) return;
-
-          // Logika Dropdown (Pilihan Jawaban)
-          const selector = item.querySelector(".score-selector");
-          if (selector) {
-            itemScore = parseFloat(selector.value) || 0;
-
-            // Update tampilan kotak kanan
-            scoreBox.innerText = itemScore;
-            scoreBox.style.color = "var(--success)";
-            scoreBox.style.backgroundColor = "#f1f5f9";
-            scoreBox.style.border = "1px solid var(--border)";
-          }
-
-          // Catatan: Jika nanti di Grup B ada soal bertipe rumus,
-          // Anda bisa meng-copy logika perhitungan rumus dari Grup C ke sini.
-
-          totalGrupB += itemScore;
-        });
-
-        // Tampilkan Sub Total Grup B
-        document.getElementById("subTotalB").innerText = totalGrupB.toFixed(2);
-
-        // Perbarui Total Keseluruhan
-        hitungTotalAkhir();
-      }
-
-      // ==========================================
-      // FUNGSI KHUSUS MENGHITUNG GRUP C
-      // ==========================================
-      function hitungGrupC() {
-        totalGrupC = 0; // Kembalikan ke 0 sebelum menghitung ulang
-        const items = document.querySelectorAll("#groupC .question-item");
-
-        items.forEach((item) => {
-          let itemScore = 0;
-          const scoreBox = item.querySelector(".q-score");
-          if (!scoreBox) return;
-
-          // Logika Input Manual Bersyarat (Rumus SDM)
-          if (item.classList.contains("formula-type")) {
-            const elRealisasi = item.querySelector(".val-realisasi");
-            const elTarget = item.querySelector(".val-target");
-
-            if (elRealisasi && elTarget) {
-              const valReal = parseFloat(elRealisasi.value) || 0;
-              const valTarget = parseFloat(elTarget.value) || 0;
-
-              // Reset styling kotak kanan menjadi normal
-              scoreBox.style.color = "var(--success)";
-              scoreBox.style.backgroundColor = "#f1f5f9";
-              scoreBox.style.border = "1px solid var(--border)";
-              scoreBox.style.fontSize = "16px";
-
-              if (valTarget === 0) {
-                itemScore = 0;
-                scoreBox.innerText = "0";
-              } else {
-                const rasio = valReal / valTarget;
-
-                // Penerapan Logika IF Bertingkat Excel
-                if (rasio < 0.1) {
-                  itemScore = 0;
-                  scoreBox.innerText = "0";
-                } else if (rasio < 0.5) {
-                  itemScore = 0.4;
-                  scoreBox.innerText = "0.4";
-                } else if (rasio <= 0.99) {
-                  itemScore = 0.8;
-                  scoreBox.innerText = "0.8";
-                } else if (rasio === 1) {
-                  itemScore = 1;
-                  scoreBox.innerText = "1";
-                } else if (rasio > 1) {
-                  itemScore = 0;
-                  scoreBox.innerText = "Nilai Salah";
-
-                  // Ubah style kotak jadi error (Merah)
-                  scoreBox.style.color = "white";
-                  scoreBox.style.backgroundColor = "var(--danger)";
-                  scoreBox.style.border = "1px solid var(--danger)";
-                  scoreBox.style.fontSize = "12px";
-                }
-              }
-            }
-          }
-
-          totalGrupC += itemScore;
-        });
-
-        // Tampilkan Sub Total Grup C
-        document.getElementById("subTotalC").innerText = totalGrupC.toFixed(2);
-
-        // Perbarui Total Keseluruhan
-        hitungTotalAkhir();
-      }
-
-      // ==========================================
-      // FUNGSI GABUNGAN (GRAND TOTAL)
-      // ==========================================
-      function hitungTotalAkhir() {
-        const grandTotal = totalGrupA + totalGrupB + totalGrupC; // Tambahkan totalGrupD dst di sini jika ada
-        document.getElementById("grandTotal").innerText = grandTotal.toFixed(2);
-      }
-
-      // Eksekusi fungsi pertama kali saat halaman baru saja dibuka
-      window.onload = function () {
-        hitungGrupB();
-        hitungGrupC();
-      };
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="assets/js/rumus.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

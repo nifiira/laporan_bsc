@@ -58,6 +58,12 @@ body {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
+.h-row,
+.summary-parent {
+  display: flex;
+  align-items: center;
+}
+
 .h-num {
   width: 60px;
   padding: 12px;
@@ -156,6 +162,12 @@ details[open] > summary {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
+  align-self: center;
+}
+.score-plus {
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-right: 16px;
 }
 .rumus-badge {
   background-color: var(--warning);
@@ -316,6 +328,26 @@ select:focus {
   font-size: 14px !important;
   padding: 10px 15px !important;
 }
+.badge-grand-total {
+  background-color: var(
+    --primary
+  ); /* Biru gelap menyesuaikan warna header tabel Anda */
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px; /* Bentuk kapsul yang elegan */
+  font-weight: bold;
+  font-size: 13px; /* Ukuran disesuaikan agar tidak kebesaran di dalam header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-left: auto; /* INI KUNCINYA: Mendorong badge ke ujung paling kanan */
+  white-space: nowrap; /* Mencegah teks turun ke bawah / menjadi 2 baris */
+  flex-shrink: 0;
+}
+
+.h-row,
+.details-parent,
+.row-input {
+  page-break-inside: avoid;
+}
 
 /* =========================================
            KODE RESPONSIVE UNTUK HP DAN TABLET
@@ -398,5 +430,10 @@ select:focus {
     flex-direction: column;
     text-align: center;
     gap: 15px;
+  }
+  .badge-grand-total {
+    margin-top: 12px; /* Memberi jarak atas agar tidak menempel dengan judul */
+    margin-left: 0; /* Mengembalikan posisi ke kiri */
+    width: fit-content; /* Memastikan lebarnya pas dengan teks */
   }
 }
