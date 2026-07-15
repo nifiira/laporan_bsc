@@ -84,6 +84,28 @@ function aksiLogin() {
     });
 }
 
+// ========================================================
+// FUNGSI TAMPILKAN / SEMBUNYIKAN PASSWORD
+// ========================================================
+function togglePassword() {
+  const input = document.getElementById("inputPassword");
+  const icon = document.getElementById("iconPassword");
+
+  if (input.type === "password") {
+    // Ubah ke teks agar password terlihat
+    input.type = "text";
+    // Ubah ikon mata terbuka menjadi mata tertutup (dicoret)
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    // Kembalikan ke password (titik-titik)
+    input.type = "password";
+    // Kembalikan ke ikon mata terbuka
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
 function logoutUser() {
   const konfirmasi = confirm("Apakah Anda yakin ingin keluar?");
   if (konfirmasi) {
