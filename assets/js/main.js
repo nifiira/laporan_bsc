@@ -21,12 +21,12 @@ let currentUser = null;
 let formRef = null;
 
 // ========================================================
-// 2. SISTEM LOGIN & LOGOUT
+// 2. SISTEM LOGIN & LOGOUT (Versi 2 File / Redirect URL)
 // ========================================================
 // Mengawasi Perubahan Status User
 auth.onAuthStateChanged((user) => {
-  const panelLogin = document.getElementById("panel-login");
-  const panelUser = document.getElementById("panel-user");
+  // Mengecek apakah URL saat ini adalah halaman dashboard
+  const isDashboardPage = window.location.pathname.includes("dashboard.html");
   const namaUser = document.getElementById("namaUser");
 
   if (user) {
@@ -35,25 +35,32 @@ auth.onAuthStateChanged((user) => {
     formRef = db.collection("evaluasi_kinerja").doc(user.uid);
     console.log("User terhubung:", user.email);
     
-    // Update UI Panel
-    if (panelLogin) panelLogin.style.display = "none";
-    if (panelUser) panelUser.style.display = "block";
-    if (namaUser) namaUser.innerText = user.email;
+    // Tampilkan nama user (menghilangkan @gmail.com)
+    if (namaUser) {
+        namaUser.innerText = user.email.replace("@gmail.com", "");
+    }
 
-    // Tarik data otomatis dari database
-    muatDataDariFirebase();
+    if (isDashboardPage) {
+        // Jika sudah di dashboard, tarik data otomatis dari database
+        muatDataDariFirebase();
+    } else {
+        // Jika user buka index.html tapi SUDAH login, langsung lempar ke dashboard
+        window.location.href = "dashboard.html";
+    }
+
   } else {
     currentUser = null;
     formRef = null;
     
-    if (panelLogin) panelLogin.style.display = "block";
-    if (panelUser) panelUser.style.display = "none";
-    if (namaUser) namaUser.innerText = "-";
+    if (isDashboardPage) {
+        // Jika user buka dashboard.html tapi BELUM login, langsung lempar ke index.html
+        window.location.href = "index.html";
+    }
   }
 });
 
 function aksiLogin() {
-  // 1. Ambil nilai input (walaupun ID-nya inputEmail, pengguna akan mengetik Username)
+  // 1. Ambil nilai input
   const username = document.getElementById("inputEmail").value;
   const password = document.getElementById("inputPassword").value;
 
@@ -68,8 +75,9 @@ function aksiLogin() {
   // 3. Gunakan dummyEmail untuk proses login ke Firebase
   auth.signInWithEmailAndPassword(dummyEmail, password)
     .then((userCredential) => {
-      // Alert sukses dimodifikasi agar menampilkan username, bukan email palsunya
+      // Alert sukses dimodifikasi agar menampilkan username
       alert("Berhasil masuk sebagai " + username);
+      // Pindah halaman otomatis di-handle oleh onAuthStateChanged di atas
     })
     .catch((error) => {
       alert("Login Gagal: " + error.message);
@@ -77,11 +85,13 @@ function aksiLogin() {
 }
 
 function logoutUser() {
-  auth.signOut().then(() => {
-    location.reload(); 
-  });
+  const konfirmasi = confirm("Apakah Anda yakin ingin keluar?");
+  if (konfirmasi) {
+    auth.signOut().then(() => {
+        // Pindah halaman ke index otomatis di-handle oleh onAuthStateChanged
+    });
+  }
 }
-
 
 // ========================================================
 // 3. FUNGSI PENYIMPANAN CLOUD FIRESTORE
@@ -103,9 +113,8 @@ function simpanKeFirebase(namaPoin, nilaiRealisasi, nilaiTarget, skorAkhir) {
 }
 
 // ========================================================
-// 3. FUNGSI PENYIMPANAN & PEMUATAN CLOUD FIRESTORE
+// 3b. FUNGSI PEMUATAN CLOUD FIRESTORE
 // ========================================================
-
 function muatDataDariFirebase() {
   if (!formRef) return;
 
@@ -510,6 +519,7 @@ function resetData() {
     if (formRef) {
       formRef.delete().then(() => {
         alert("Semua data berhasil dihapus dari sistem.");
+        // Otomatis diarahkan ulang agar data hilang dari layar
         location.reload(); 
       }).catch((error) => {
         alert("Gagal menghapus data: " + error.message);
