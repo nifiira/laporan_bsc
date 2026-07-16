@@ -1,0 +1,4022 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Sistem Penilaian Kinerja BLUD RSUD</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/icon.png" />
+  </head>
+
+  <body>
+    <div class="container-dashboard" id="panel-user">
+      <div class="header">
+        <h2>Sistem Penilaian Kinerja BLUD RSUD</h2>
+        <p>Format Evaluasi Mandiri Otomatis</p>
+      </div>
+
+      <!-- Point 1 -->
+      <div class="excel-table-container">
+        <div class="h-row lvl-1">
+          <div class="h-num">1</div>
+          <div class="h-text">
+            KINERJA DARI PERSPEKTIF PERTUMBUHAN DAN PEMBELAJARAN
+          </div>
+        </div>
+        <div class="h-row lvl-2">
+          <div class="h-num">1.1</div>
+          <div class="h-text">KINERJA ASPEK PELAYANAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_11_Total">0.00</span></span
+          >
+        </div>
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">1.1.1</div>
+            <div class="h-text">Sub Aspek Pertumbuhan Pembelajaran</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_111_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Kecukupan Sumber Daya Manusia
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kecukupan Sumber Daya Manusia</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jenis dan Jumlah SDM yang ada sesuai ketentuan PP 47 th
+                        2021 :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jenis dan Jumlah SDM yang ada sesuai ketentuan PP 47
+                        thn 2021 yang memenuhi ABK :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B -->
+          <details>
+            <summary>
+              B. Rata-rata Jam Pelatihan Pegawai BLUD
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Rata-rata Jam Pelatihan Pegawai BLUD
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Total realisasi jam pelatihan pegawai :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pegawai x 20 jam :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_B">0</div>
+              </li>
+            </ul>
+          </details>
+          <!-- Point C -->
+          <details>
+            <summary>
+              C. Pelatihan 20 Jam per Pegawai
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pelatihan 20 Jam per Pegawai</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pegawai yang mendapat pelatihan minimal 20 jam
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh pegawai di BLUD Rumah Sakit Daerah
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D -->
+          <details>
+            <summary>
+              D. Petugas Layanan Gawat Darurat Bersetifikat (PGD)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Petugas Layanan Gawat Darurat Bersetifikat (PGD)
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Total Petugas Layanan Gawat Darurat yang bersertifikat
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Total petugas Layanan Gawat Darurat :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E -->
+          <details>
+            <summary>
+              E. Program Reward and Punishment
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Program Reward and Punishment</div>
+                  <select
+                    id="select_111_E"
+                    onchange="hitungSkorOtomatis('111_E')"
+                  >
+                    <option value="1" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0">
+                      1. Tidak ada program reward and punishment
+                    </option>
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="1">
+                      3. Ada program sebagian dilaksanakan
+                    </option>
+                    <option value="1.5">
+                      4. Ada program dilaksanakan sepenuhnya
+                    </option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_111_E">-</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F -->
+          <details>
+            <summary>
+              F. Presentase Dokter Pendidik Klinis yang Mendapat TOT
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Presentase Dokter Pendidik Klinis yang Mendapat TOT
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah dokter pendidik klinis yang mendapatkan TOT
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_F"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah seluruh dokter pendidik klinis :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_F"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_F">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point G -->
+          <details>
+            <summary>
+              G. Kecukupan Sarana Medis
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_G">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kecukupan Sarana Medis</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jenis dan Jumlah sarana medis yang disediakan RSD
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_G"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jenis dan Jumlah sarana medis sesuai Standar yang
+                        ditetapkan oleh Permenkes Nomor 40 Tahun 2022 :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_G"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_G">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point H -->
+          <details>
+            <summary>
+              H. Pelayanan pemeliharaan sarana rumah sakit
+              <span class="score-badge"
+                >Nilai : <span id="skor_111_H_Total">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Kecepatan Waktu menanggapi kerusakan alat
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah laporan kerusakan alat yang ditangani < 15 menit
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_H1"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H1')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah Seluruh Laporan Kerusakan alat :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_H1"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H1')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_H1">0</div>
+              </li>
+              <li class="question-item formula-type">
+                <div class="q-number">2</div>
+                <div class="q-content">
+                  <div class="q-title">Ketepatan Waktu Pemeliharaan Alat</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah alat yg dilakukan pemeliharaan tepat waktu
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_H2"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H2')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Seluruh alat yg seharusnya dilakukan pemeliharaan
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_H2"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H2')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_H2">0</div>
+              </li>
+              <li class="question-item formula-type">
+                <div class="q-number">3</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Peralatan laboratorium dan alat ukur yg digunakan dlm
+                    pelayanan terkalibrasi tepat waktu sesuai ketentuan
+                    kalibrasi.
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah Seluruh alat kesehatan fasilitas kesehatan yang
+                        berkalibrasi tepat waktu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_H3"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H3')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah alat kesehatan fasilitas kesehatan yang perlu
+                        dikalibrasi :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_H3"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_H3')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_H3">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point I -->
+          <details>
+            <summary>
+              I. Pengembangan SIM RSD
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_I">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pengembangan SIM RSD</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah modul yang disediakan RSD :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_I"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>22 Modul :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_I"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_I">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point J -->
+          <details>
+            <summary>
+              J. Pelayanan administrasi manajemen
+              <span class="score-badge"
+                >Nilai : <span id="skor_111_J_Total">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <!-- J1 -->
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Tindak lanjut penyelesaian hasil pertemuan direksi
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Hasil keputusan direksi yang ditindaklanjuti :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J1"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J1')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Total hasil keputusan direksi yang harus
+                        ditindaklanjuti :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J1"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J1')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J1">0</div>
+              </li>
+
+              <!-- J2 -->
+              <li class="question-item formula-type">
+                <div class="q-number">2</div>
+                <div class="q-content">
+                  <div class="q-title">Kelengkapan laporan kinerja BLUD</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah laporan kinerja lengkap :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J2"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J2')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah laporanyang seharusnya disusun :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J2"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J2')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J2">0</div>
+              </li>
+
+              <!-- J3 -->
+              <li class="question-item formula-type">
+                <div class="q-number">3</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Ketepatan waktu pengusulan kenaikan pangkat
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumah Pegawai yg diusulkan tepat waktu sesuai periode
+                        kenaikan pangkat :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J3"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J3')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumah Seluruh Pegawai yg seharusnya diusulkan kenaikan
+                        pangkat :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J3"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J3')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J3">0</div>
+              </li>
+
+              <!-- J4 -->
+              <li class="question-item formula-type">
+                <div class="q-number">4</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Ketepatan waktu pengurusan gaji berkala
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pegawai yg pengurusan kenaikan gaji berkalanya
+                        tepat waktu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J4"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J4')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh pegawai yg harus dilakukan pengurusan
+                        kenaikan gaji berkalanya :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J4"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J4')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J4">0</div>
+              </li>
+
+              <!-- J5 -->
+              <li class="question-item formula-type">
+                <div class="q-number">5</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Ketepatan waktu penyusunan laporan keuangan
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah laporan keuangan yg diselesaikan :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J5"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J5')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah laporan keuangan yg seharusnya diselesaikan
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J5"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J5')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J5">0</div>
+              </li>
+
+              <!-- J6 -->
+              <li class="question-item formula-type">
+                <div class="q-number">6</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Ketepatan waktu pemberian informasi tagihan pasien rawat
+                    inap (jam).
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah kumulatif waktu pemberian informasi tagihan
+                        pasien rawat inap :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J6"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J6')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien rawat inap :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J6"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J6')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J6">0</div>
+              </li>
+
+              <!-- J7 -->
+              <li class="question-item formula-type">
+                <div class="q-number">7</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Ketepatan waktu pemberian imbalan (insentif) sesuai
+                    kesepakatan waktu
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Waktu pemberian insentif yang tepat waktu dalam periode
+                        3 bulan :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_J7"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J7')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>3 Bulan :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_J7"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_J7')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_J7">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point K -->
+          <details>
+            <summary>
+              K. Kenaikan Pendapatan RSD per Pegawai
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_111_K">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kenaikan Pendapatan RSD per Pegawai</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata peningkatan pendapatan jasa layanan BLUD (non
+                        APBD) :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_111_K"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pegawai RSD :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_111_K"
+                        min="0"
+                        oninput="hitungSkorOtomatis('111_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_111_K">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+      </div>
+
+      <!-- Point 2 -->
+      <div class="excel-table-container" style="margin-top: 25px">
+        <div class="h-row lvl-1">
+          <div class="h-num">2</div>
+          <div class="h-text">
+            KINERJA DARI PERSPEKTIF PROSES LAYANAN INTERNAL
+          </div>
+        </div>
+        <div class="h-row lvl-2">
+          <div class="h-num">2.1</div>
+          <div class="h-text">KINERJA ASPEK PELAYANAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_21_Total">0.00</span></span
+          >
+        </div>
+
+        <!--------------------------- Point 211 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">2.1.1</div>
+            <div class="h-text">Sub Aspek Pertumbuhan Produktivitas</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_211_Total">0.00</span></span
+            >
+          </summary>
+          <!-- Point A2.1.1 -->
+          <details>
+            <summary>
+              A. Pertumbuhan Kunjungan Rawat Jalan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pertumbuhan Kunjungan Rawat Jalan</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata kunjungan rawat jalan per hari pada satu
+                        periode :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata kunjungan rawat jalan per hari pada satu
+                        periode yang sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point 211 B -->
+          <details>
+            <summary>
+              B. Pertumbuhan rata-rata kunjungan Gawat Darurat
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Pertumbuhan rata-rata kunjungan Gawat Darurat
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata kunjungan gawat darurat per hari pada satu
+                        periode :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata kunjungan gawat darurat per hari pada satu
+                        periode yang sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point C2.1.1 -->
+          <details>
+            <summary>
+              C. Pertumbuhan Kunjungan Rawat Inap
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pertumbuhan Kunjungan Rawat Inap</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah hari perawatan rawat inap pada satu periode
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah hari perawatan rawat inap pada satu periode yang
+                        sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D3.1.1 -->
+          <details>
+            <summary>
+              D. Pertumbuhan Pemeriksaan Radiologi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pertumbuhan Pemeriksaan Radiologi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata pemeriksaan radiologi per hari pada satu
+                        periode :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >rata-rata pemeriksaan radiologi per hari pada satu
+                        periode yang sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E3.1.1 -->
+          <details>
+            <summary>
+              E. Pertumbuhan Pemeriksaan Laboratorium
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Pertumbuhan Pemeriksaan Laboratorium
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pemeriksanaan laboratorium selama satu periode
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_E"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >jumlah pemeriksanaan laboratorium selama satu periode
+                        yang sama :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_E"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_E">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F3.1.1 -->
+          <details>
+            <summary>
+              F. Pertumbuhan Operasi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pertumbuhan Operasi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata operasi per hari pada satu periode :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_F"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >rata-rata operasi per hari pada satu periode yang sama
+                        di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_F"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_F">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point G3.1.1 -->
+          <details>
+            <summary>
+              G. Pertumbuhan Rehab Medik
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_G">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pertumbuhan Rehab Medik</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata rehab medis per hari pada satu periode
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_G"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >rata-rata rehab medis per hari pada satu periode di
+                        tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_G"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_G">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point H3.1.1 -->
+          <details>
+            <summary>
+              H. Pertumbuhan Peserta Didik Pendidikan Kedokteran
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_H">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Pertumbuhan Peserta Didik Pendidikan Kedokteran
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah peserta didik pendidikan kedokteran pada satu
+                        periode :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_H"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >jumlah peserta didik pendidikan kedokteran pada satu
+                        periode yang sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_H"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_H">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point I3.1.1 -->
+          <details>
+            <summary>
+              I. Pertumbuhan Penelitian yang dipublikasikan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_211_I">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Pertumbuhan Penelitian yang dipublikasikan
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah penelitian yang dipublikasikan pada satu periode
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_211_I"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >jumlah penelitian yang dipublikasikan pada satu periode
+                        yang sama di tahun lalu :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_211_I"
+                        min="0"
+                        oninput="hitungSkorOtomatis('211_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_211_I">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 212 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">2.1.2</div>
+            <div class="h-text">Sub Aspek Efektifitas Pelayanan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_212_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A2.1.2 -->
+          <details>
+            <summary>
+              A. Kelengkapan Rekam Medik 24 Jam Selesai Pelayanan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Kelengkapan Rekam Medik 24 Jam Selesai Pelayanan
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah rekam medik lengkap yang disurvey :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_212_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah semua rekam medik yang disurvey :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_212_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B2.1.2 -->
+          <details>
+            <summary>
+              B. Pengembalian Rekam Medik
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pengembalian Rekam Medik</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah rekam medik yang dikembalikan ≤ 24 jam setelah
+                        pasien pulang :</label
+                      >
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_212_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah semua rekam medik :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_212_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point C2.1.2 -->
+          <details>
+            <summary>
+              C. Angka Pembatalan Operasi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Pembatalan Operasi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah pembatalan operasi elektif :</label>
+                      <input
+                        type="number"
+                        id="real_212_C"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah tindakan operasi yang telah terjadwal :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_C"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D3.1.2 -->
+          <details>
+            <summary>
+              D. Angka Kegagalan Hasil Radiologi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Kegagalan Hasil Radiologi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah kegagalan hasil radiologi :</label>
+                      <input
+                        type="number"
+                        id="real_212_D"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pemeriksaan radiologi :</label>
+                      <input
+                        type="number"
+                        id="target_212_D"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E3.1.2 -->
+          <details>
+            <summary>
+              E. Penulisan Resep Sesuai Formularium/Kepatuhan Penggunaan
+              Formularium Nasional
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Penulisan Resep Sesuai Formularium/Kepatuhan Penggunaan
+                    Formularium Nasional
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah Resep dalam lembar resep yang sesuai dengan
+                        formularium nasional :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_212_E"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah Resep dalam lembar resep yang diobservasi
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_E"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_E">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F3.1.2 -->
+          <details>
+            <summary>
+              F. Angka Pengulangan Pemeriksaan Laboratorium
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Angka Pengulangan Pemeriksaan Laboratorium
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pemeriksaan ulang di lab patologi klinik
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_212_F"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah seluruh pemeriksaan laboratorium :</label>
+                      <input
+                        type="number"
+                        id="target_212_F"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_F">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point G3.1.2 -->
+          <details>
+            <summary>
+              G. Bed Occupancy Rate (BOR)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_G">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Bed Occupancy Rate (BOR)</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah hari perawatan :</label>
+                      <input
+                        type="number"
+                        id="real_212_G"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah hari x jumlah tempat tidur :</label>
+                      <input
+                        type="number"
+                        id="target_212_G"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_G">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point H3.1.2 -->
+          <details>
+            <summary>
+              H. Waktu Tunggu Hasil Lab Kritis/Pelaporan Hasil Kritis
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_H">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Waktu Tunggu Hasil Laboratorium Kritis/Pelaporan Hasil
+                    Kritis Laboratorium
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah hasil kritis laboratorium yang dilaporkan ≤ 30
+                        menit :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_212_H"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh hasil kritis laboratorium yang
+                        diobservasi :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_H"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_H">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point I3.1.2 -->
+          <details>
+            <summary>
+              I. Waktu Tunggu di Rawat Jalan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_I">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Waktu Tunggu di Rawat Jalan</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah kumulatif waktu tunggu pasien rawat jalan yang
+                        disurvey :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_212_I"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh pasien rawat jalan yang disurvey
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_I"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_I">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point J3.1.2 -->
+          <details>
+            <summary>
+              J. Waktu Tanggap Darurat di IGD
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_J">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Waktu Tanggap Darurat di IGD</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien IGD yang mendapat pelayanan ≤ 5 menit
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_212_J"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_J')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh pasien IGD yang mendapat pelayanan
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_J"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_J')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_J">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point K2.1.2 -->
+          <details>
+            <summary>
+              K. Net Death Rate
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_212_K">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Net Death Rate</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah kematian pasien > 48 jam perawatan :</label>
+                      <input
+                        type="number"
+                        id="real_212_K"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Pasien keluar rumah sakit (hidup atau mati) dalam 1
+                        tahun :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_212_K"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('212_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_212_K">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+      </div>
+
+      <!-- Point 3 -->
+      <div class="excel-table-container" style="margin-top: 25px">
+        <div class="h-row lvl-1">
+          <div class="h-num">3</div>
+          <div class="h-text">KINERJA DARI PERSPEKTIF PELANGGAN</div>
+        </div>
+        <div class="h-row lvl-2">
+          <div class="h-num">3.1</div>
+          <div class="h-text">KINERJA MUTU DAN MANFAAT BAGI MASYARAKAT</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_31_Total">0.00</span></span
+          >
+        </div>
+
+        <!--------------------------- Point 311 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">3.1.1</div>
+            <div class="h-text">SubAspek Mutu Layanan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_311_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point 311_A -->
+          <details>
+            <summary>
+              A. Emergency Response Time Rate
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Emergency Response Time Rate</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata lama waktu tunggu sampai mendapatkan
+                        pelayanan (dalam menit) di instalasi gawat darurat
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_A"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point 311_B -->
+          <details>
+            <summary>
+              B. Waktu Tunggu Rawat Jalan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Waktu Tunggu Rawat Jalan</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata lama waktu tunggu pasien rawat jalan dalam
+                        mendapatkan pelayanan dokter (dalam menit) :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_B"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point 311_C -->
+          <details>
+            <summary>
+              C. Length of Stay
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Length of Stay</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah lama pasien dirawat :</label>
+                      <input
+                        type="number"
+                        id="real_311_C"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien keluar :</label>
+                      <input
+                        type="number"
+                        id="target_311_C"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point 311_D -->
+          <details>
+            <summary>
+              D. Kecepatan Pelayanan Resep Obat Jadi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kecepatan Pelayanan Resep Obat Jadi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata lama waktu penyelesaian pelayanan resep obat
+                        jadi (dalam menit) :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_D"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E3.1.1 -->
+          <details>
+            <summary>
+              E. Waktu Tunggu Sebelum Operasi/Penundaan Operasi Efektif
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Waktu Tunggu Sebelum Operasi/Penundaan Operasi Efektif
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien yang jadwal operasinya tertunda > 1 jam
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_E"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang operasi efektif :</label>
+                      <input
+                        type="number"
+                        id="target_311_E"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_E">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F3.1.1 -->
+          <details>
+            <summary>
+              F. Waktu Tunggu Hasil Laboratorium
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Waktu Tunggu Hasil Laboratorium</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata lama waktu menunggu hasil laboratorium (dalam
+                        jam) :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_F"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_F">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point G3.1.1 -->
+          <details>
+            <summary>
+              G. Waktu Tunggu Hasil Radiologi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_G">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Waktu Tunggu Hasil Radiologi</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Rata-rata lama waktu menunggu hasil radiologi (dalam
+                        jam) :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_G"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_G">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point H3.1.1 -->
+          <details>
+            <summary>
+              H. Rujukan Keluar Rawat Inap
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_H">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Rujukan Keluar Rawat Inap</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien rawat inap yang dirujuk sesuai standar
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_H"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien rawat inap rumah sakit yang dirujuk
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_311_H"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_H">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point I3.1.1 -->
+          <details>
+            <summary>
+              I. Retensi Pelanggan Rawat Jalan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_I">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Retensi Pelanggan Rawat Jalan</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah pasien lama rawat jalan :</label>
+                      <input
+                        type="number"
+                        id="real_311_I"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien rawat jalan :</label>
+                      <input
+                        type="number"
+                        id="target_311_I"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_I')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_I">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point J3.1.1 -->
+          <details>
+            <summary>
+              J. Pasien Pulang Paksa (Atas Permintaan Sendiri)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_J">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Pasien Pulang Paksa</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien rawat inap yang melakukan pulang paksa
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_J"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_J')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien keluar rumah sakit :</label>
+                      <input
+                        type="number"
+                        id="target_311_J"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_J')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_J">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point K3.1.1 -->
+          <details>
+            <summary>
+              K. Kepatuhan Kebersihan Tangan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_K">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kepatuhan Kebersihan Tangan</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah tindakan kebersihan tangan yang dilakukan
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_K"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah peluang kebersihan tangan yang seharusnya
+                        dilakukan :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_311_K"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_K')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_K">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point L3.1.1 -->
+          <details>
+            <summary>
+              L. Kepatuhan Penggunaan Alat Pelindung Diri
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_L">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Kepatuhan Penggunaan Alat Pelindung Diri
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah petugas yang menggunakan APD :</label>
+                      <input
+                        type="number"
+                        id="real_311_L"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_L')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah seluruh petugas yang terindikasi menggunakan APD
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_311_L"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_L')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_L">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point M3.1.1 -->
+          <details>
+            <summary>
+              M. Kepatuhan Identifikasi Pasien
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_M">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kepatuhan identifikasi pasien</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pemberi layanan yang melakukan identifikasi
+                        pasien secara benar :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_M"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_M')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pemberi layanan :</label>
+                      <input
+                        type="number"
+                        id="target_311_M"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_M')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_M">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point N3.1.1 -->
+          <details>
+            <summary>
+              N. Waktu Tanggap Operasi Seksio Sesarea Emergensi
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_N">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Waktu Tanggap Operasi Seksio Sesarea Emergensi
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien tindakan seksio sesarea emergensi ≤ 30
+                        menit :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_N"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_N')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien tindakan seksio sesarea emergensi
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_311_N"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_N')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_N">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point O3.1.1 -->
+          <details>
+            <summary>
+              O. Kepatuhan Waktu Visite Dokter
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_O">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kepatuhan Waktu Visite Dokter</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien yang di visite dokter pukul 06.00-14.00
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_O"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_O')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang diobservasi :</label>
+                      <input
+                        type="number"
+                        id="target_311_O"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_O')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_O">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point P3.1.1 -->
+          <details>
+            <summary>
+              P. Kepatuhan Terhadap Alur Klinis (Clinical Pathway)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_311_P">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Kepatuhan Terhadap Alur Klinis (Clinical Pathway)
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pelayanan oleh PPA sesuai clinical pathway
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_311_P"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_P')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah seluruh pelayanan oleh KPA :</label>
+                      <input
+                        type="number"
+                        id="target_311_P"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('311_P')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_311_P">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 312 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">3.1.2</div>
+            <div class="h-text">Sub Aspek Mutu Klinik</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_312_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A3.1.2 -->
+          <details>
+            <summary>
+              A. Angka Kematian di Gawat Darurat
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Kematian di Gawat Darurat</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah kematian pasien yang telah dilayani di UGD
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_A"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dilayani di UGD :</label>
+                      <input
+                        type="number"
+                        id="target_312_A"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B3.1.2 -->
+          <details>
+            <summary>
+              B. Angka Kematian/Kebutaan > 48 jam
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Kematian/Kebutaan > 48 jam</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien meninggal/buta setelah dirawat ≥ 48 jam
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_B"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien yang keluar (hidup atau mati) :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_312_B"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point C3.1.2 -->
+          <details>
+            <summary>
+              C. Post Operative Death Rate
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Post Operative Death Rate</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah pasien operasi yang meninggal :</label>
+                      <input
+                        type="number"
+                        id="real_312_C"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dioperasi :</label>
+                      <input
+                        type="number"
+                        id="target_312_C"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D3.1.2 -->
+          <details>
+            <summary>
+              D. Angka Infeksi Nosokomial Dekubitus
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Infeksi Nosokomial Dekubitus</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien dirawat yang terkena infeksi nosokomial
+                        dekubitus :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_D"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dirawat :</label>
+                      <input
+                        type="number"
+                        id="target_312_D"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E3.1.2 -->
+          <details>
+            <summary>
+              E. Angka Infeksi Nosokomial Phlebitis
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Infeksi Nosokomial Phlebitis</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien dirawat yang terkena infeksi nosokomial
+                        phlebitis :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_E"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dirawat :</label>
+                      <input
+                        type="number"
+                        id="target_312_E"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_E">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F3.1.2 -->
+          <details>
+            <summary>
+              F. Angka Infeksi Nosokomial Saluran Kemih (ISK)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Angka Infeksi Nosokomial Saluran Kemih (ISK)
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien dirawat yang terkena infeksi nosokomial
+                        saluran kemih :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_F"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dirawat :</label>
+                      <input
+                        type="number"
+                        id="target_312_F"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_F">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point G3.1.2 -->
+          <details>
+            <summary>
+              G. Angka Infeksi Nosokomial Luka Operasi (ILO)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_G">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Angka Infeksi Nosokomial Luka Operasi (ILO)
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien dirawat yang terkena infeksi nosokomial
+                        luka operasi :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_G"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah pasien yang dirawat :</label>
+                      <input
+                        type="number"
+                        id="target_312_G"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_G')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_G">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point H3.1.2 -->
+          <details>
+            <summary>
+              H. Angka Kematian Ibu di Rumah Sakit
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_312_H">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Angka Kematian Ibu di Rumah Sakit.</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah kematian ibu dalam proses kehamilan persalinan
+                        dan nifas :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_312_H"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah ibu yang dilayani dalam proses kehamilan
+                        persalinan dan nifas :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_312_H"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('312_H')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_312_H">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 313 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">3.1.3</div>
+            <div class="h-text">Sub Aspek Kepedulian Pada Masyarakat</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_313_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A3.1.3 -->
+          <details>
+            <summary>
+              A. Rasio Tempat Tidur Kelas III (RTT)
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Rasio Tempat Tidur Kelas III (RTT)</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah tempat tidur perawatan kelas III :</label>
+                      <input
+                        type="number"
+                        id="real_313_A"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah seluruh tempat tidur perawatan :</label>
+                      <input
+                        type="number"
+                        id="target_313_A"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_313_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B3.1.3 -->
+          <details>
+            <summary>
+              B. Kecepatan Waktu Tanggapi Komplain
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_B">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kecepatan Waktu Tanggapi Komplain</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah komplain yang ditanggapi dan ditindaklanjuti
+                        :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_313_B"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Jumlah komplain yang di survei :</label>
+                      <input
+                        type="number"
+                        id="target_313_B"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_313_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point C3.1.3 -->
+          <details>
+            <summary>
+              C. Kepuasan Pasien
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_C">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Kepuasan Pasien</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Total nilai persepsi seluruh responden x 25 :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_313_C"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Total unsur yang terisi dari seluruh responden :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_313_C"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_313_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D3.1.3 -->
+          <details>
+            <summary>
+              D. Pembinaan kepada Pusat Pelayanan Masyarakat dan Sarana
+              Kesehatan Lain
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_D">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Pembinaan kepada Pusat Pelayanan Masyarakat dan Sarana
+                    Kesehatan Lain
+                  </div>
+                  <select
+                    id="select_313_D"
+                    onchange="hitungSkorOtomatis('313_D')"
+                  >
+                    <option value="1" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0.25">1. Tidak ada program</option>
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="0.75">
+                      3. Ada program sebagian dilaksanakan
+                    </option>
+                    <option value="1">
+                      4. Ada program yang dilaksanakan semua
+                    </option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_313_D">-</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E3.1.3 -->
+          <details>
+            <summary>
+              E. Penyuluhan Kesehatan
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_E">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Penyuluhan Kesehatan</div>
+                  <select
+                    id="select_313_E"
+                    onchange="hitungSkorOtomatis('313_E')"
+                  >
+                    <option value="1" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0.25">1. Tidak ada program</option>
+                    <option value="0.5">
+                      2. Ada program tidak dilaksanakan
+                    </option>
+                    <option value="0.75">
+                      3. Ada program sebagian dilaksanakan
+                    </option>
+                    <option value="1">
+                      4. Ada program yang dilaksanakan semua
+                    </option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_313_E">-</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point F3.1.3 -->
+          <details>
+            <summary>
+              F. Kepatuhan Upaya Pencegahan Risiko Pasien Jatuh
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_313_F">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Kepatuhan Upaya pencegahan Risiko Pasien Jatuh
+                  </div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien rawat inap berisiko tinggi jatuh yang
+                        mendapatkan 3(tiga) upaya pencegahan :</label
+                      >
+                      <input
+                        type="number"
+                        id="real_313_F"
+                        class="val-realisasi"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label
+                        >Jumlah pasien rawat inap berisiko tinggi jatuh yang
+                        diobservasi :</label
+                      >
+                      <input
+                        type="number"
+                        id="target_313_F"
+                        class="val-target"
+                        min="0"
+                        oninput="hitungSkorOtomatis('313_F')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_313_F">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 314 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">3.1.4</div>
+            <div class="h-text">Sub Aspek Kepedulian Terhadap Lingkungan</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_314_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A3.1.4 -->
+          <details>
+            <summary>
+              A. Pengolahan Baku Mutu Limbah Cair
+              <span class="score-badge"
+                >Nilai : <span id="skor_314_A_Total">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Biochemical Oxygen Demand (BOD) < 30mg/l
+                  </div>
+                  <select
+                    id="select_314_A1"
+                    onchange="hitungSkorOtomatis('314_A1')"
+                  >
+                    <option value="0" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_314_A1">0</div>
+              </li>
+              <li class="question-item formula-type">
+                <div class="q-number">2</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Chemical Oxygen Demand (COD) < 80mg/l
+                  </div>
+                  <select
+                    id="select_314_A2"
+                    onchange="hitungSkorOtomatis('314_A2')"
+                  >
+                    <option value="0" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_314_A2">0</div>
+              </li>
+              <li class="question-item formula-type">
+                <div class="q-number">3</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Total suspended Solids (TSS) < 30mg/l
+                  </div>
+                  <select
+                    id="select_314_A3"
+                    onchange="hitungSkorOtomatis('314_A3')"
+                  >
+                    <option value="0" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_314_A3">0</div>
+              </li>
+              <li class="question-item formula-type">
+                <div class="q-number">4</div>
+                <div class="q-content">
+                  <div class="q-title">Potential Hidrogen (PH) 6-9</div>
+                  <select
+                    id="select_314_A4"
+                    onchange="hitungSkorOtomatis('314_A4')"
+                  >
+                    <option value="0" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0">1. Tidak</option>
+                    <option value="0.25">2. Ya</option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_314_A4">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 315 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">3.1.5</div>
+            <div class="h-text">Sub Aspek Akreditasi</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_315_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A3.1.5 -->
+          <details>
+            <summary>
+              A. Akreditasi Rumah Sakit
+              <span class="score-badge"
+                >Nilai : <span id="subTotal_315_A">0.00</span></span
+              >
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Akreditasi Rumah Sakit</div>
+                  <select
+                    id="select_315_A"
+                    onchange="hitungSkorOtomatis('315_A')"
+                  >
+                    <option value="0" style="text-align: center">
+                      -- Pilih Jawaban --
+                    </option>
+                    <option value="0.25">1. Kategori Perdana</option>
+                    <option value="0.5">2. Kategori Madya</option>
+                    <option value="0.75">3. Kategori Utama</option>
+                    <option value="1">4. Kategori Paripurna</option>
+                  </select>
+                </div>
+                <div class="q-score" id="skor_315_A">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+      </div>
+
+      <!-- Point 4 -->
+      <div class="excel-table-container" style="margin-top: 25px">
+        <div class="h-row lvl-1">
+          <div class="h-num">4</div>
+          <div class="h-text">KINERJA DARI PERSPEKTIF KEUANGAN</div>
+        </div>
+        <div class="h-row lvl-2">
+          <div class="h-num">4.1</div>
+          <div class="h-text">KINERJA PERSPEKTIF KEUANGAN</div>
+          <span class="score-badge score-plus"
+            >Total Poin Nilai : <span id="skor_41_Total">0.00</span></span
+          >
+        </div>
+
+        <!--------------------------- Point 411 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.1</div>
+            <div class="h-text">
+              Sub Kinerja Aspek Perolehan Hasil Usaha atau Hasil Kerja dari
+              Layanan yang Diberikan.
+            </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_411_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Periode Penagihan Piutang (Collection Period)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_411_A">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Periode Penagihan Piutang (Collection Period)
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Piutang Operasional × 360 × 1 hari :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_411_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_A')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Pendapatan Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_411_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="q-score" id="skor_411_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B -->
+          <details>
+            <summary>
+              B. Perputaran Aset Tetap (Fixed Asset Turnover)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_411_B">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Perputaran Aset Tetap (Fixed Asset Turnover)
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Pendapatan Operasional - LO :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_411_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_B')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Aset Tetap :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_411_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="q-score" id="skor_411_B">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point C -->
+          <details>
+            <summary>
+              C. Perputaran Persediaan (Inventory Turnover)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_411_C">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Perputaran Persediaan (Inventory Turnover)
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Total Persediaan × 365 × 1 hari :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_411_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_C')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Pendapatan BLUD (Non APBD) dan APBD - LO :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_411_C"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_C')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="q-score" id="skor_411_C">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point D -->
+          <details>
+            <summary>
+              D. Imbalan atas Aset Tetap (Return on Fixed Asset)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_411_D">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Imbalan atas Aset Tetap (Return on Fixed Asset)
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Surplus / Defisit Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_411_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_D')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Aset Tetap :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_411_D"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_D')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_411_D">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point E -->
+          <details>
+            <summary>
+              E. Imbalan atas Ekuitas (Return on Equity)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_411_E">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">
+                    Imbalan atas Ekuitas (Return on Equity)
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Surplus / Defisit Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_411_E"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_E')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Ekuitas - Surplus / Defisit Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_411_E"
+                        min="0"
+                        oninput="hitungSkorOtomatis('411_E')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_411_E">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 412 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.2</div>
+            <div class="h-text">
+              Sub Kinerja Memenuhi Seluruh Kewajiban Jangka Pendeknya
+            </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_412_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Rasio Kas (Cash Ratio)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_412_A">0.00</span>
+              </span>
+            </summary>
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+                <div class="q-content">
+                  <div class="q-title">Rasio Kas (Cash Ratio)</div>
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Kas dan Setara Kas :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_412_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('412_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div class="formula-row">
+                      <label>Kewajiban Jangka Pendek :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_412_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('412_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_412_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B -->
+          <details>
+            <summary>
+              B. Rasio Lancar (Current Ratio)
+              <span class="score-badge">
+                Nilai : <span id="subTotal_412_B">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">Rasio Lancar (Current Ratio)</div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Aset Lancar :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_412_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('412_B')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Kewajiban Jangka Pendek :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_412_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('412_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="q-score" id="skor_412_B">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 413 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.3</div>
+            <div class="h-text">Sub Kinerja Memenuhi Seluruh Kewajiban</div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_413_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Rasio Kewajiban terhadap Aset
+              <span class="score-badge">
+                Nilai : <span id="subTotal_413_A">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">Rasio Kewajiban terhadap Aset</div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah Kewajiban :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_413_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('413_A')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Jumlah Aset :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_413_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('413_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="q-score" id="skor_413_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B -->
+          <details>
+            <summary>
+              B. Rasio Kewajiban terhadap Ekuitas
+              <span class="score-badge">
+                Nilai : <span id="subTotal_413_B">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">Rasio Kewajiban terhadap Ekuitas</div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Jumlah Kewajiban :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_413_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('413_B')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Jumlah Ekuitas :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_413_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('413_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_413_B">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+
+        <!--------------------------- Point 414 ---------------------------------->
+        <details class="details-parent">
+          <summary class="summary-clean summary-parent">
+            <div class="h-num">4.1.4</div>
+            <div class="h-text">
+              Sub Kinerja Kemampuan Penerimaan dari Jasa Layanan untuk Membiayai
+              Pengeluaran
+            </div>
+            <span class="score-badge score-plus"
+              >Total Nilai : <span id="skor_414_Total">0.00</span></span
+            >
+          </summary>
+
+          <!-- Point A -->
+          <details>
+            <summary>
+              A. Rasio Pendapatan BLUD non APBD-LO terhadap Biaya Operasional /
+              Cost Recovery Rate
+              <span class="score-badge">
+                Nilai : <span id="subTotal_414_A">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">
+                    Rasio Pendapatan BLUD non APBD-LO terhadap Biaya Operasional
+                    / Cost Recovery Rate
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Pendapatan BLUD non APBD - LO :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_414_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('414_A')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Biaya Operasional :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_414_A"
+                        min="0"
+                        oninput="hitungSkorOtomatis('414_A')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_414_A">0</div>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Point B -->
+          <details>
+            <summary>
+              B. Porsi Pendapatan APBD-LO dibandingkan Pendapatan non APBD-LO
+              <span class="score-badge">
+                Nilai : <span id="subTotal_414_B">0.00</span>
+              </span>
+            </summary>
+
+            <ul class="question-list">
+              <li class="question-item formula-type">
+                <div class="q-number">1</div>
+
+                <div class="q-content">
+                  <div class="q-title">
+                    Porsi Pendapatan APBD-LO dibandingkan Pendapatan non APBD-LO
+                  </div>
+
+                  <div class="formula-box">
+                    <div class="formula-row">
+                      <label>Pendapatan BLUD non APBD - LO :</label>
+                      <input
+                        type="number"
+                        class="val-realisasi"
+                        id="real_414_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('414_B')"
+                        placeholder="0"
+                      />
+                    </div>
+
+                    <div class="formula-row">
+                      <label>Pendapatan APBD - LO :</label>
+                      <input
+                        type="number"
+                        class="val-target"
+                        id="target_414_B"
+                        min="0"
+                        oninput="hitungSkorOtomatis('414_B')"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="q-score" id="skor_414_B">0</div>
+              </li>
+            </ul>
+          </details>
+        </details>
+      </div>
+
+      <!-- Total Panel -->
+      <div class="total-panel">
+        <h3>TOTAL NILAI KINERJA RSUD</h3>
+        <div class="total-score" id="grandTotal">0.00</div>
+        <div class="predikat-score" style="font-weight: bold; margin-top: 5px">
+          Predikat: <span id="predikatGrandTotal">-</span>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-excel" onclick="exportToExcel()">
+          <i class="fa-solid fa-file-excel"></i>
+          Unduh Laporan Excel
+        </button>
+        <button class="btn-reset" onclick="resetData()">
+          <i class="fa-solid fa-trash"></i>
+          Hapus Data (Reset)
+        </button>
+        <button class="btn-pdf" onclick="logoutUser()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Logout
+        </button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="assets/js/rumus_rsud.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

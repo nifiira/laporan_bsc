@@ -21,40 +21,62 @@ let currentUser = null;
 let formRef = null;
 
 // ========================================================
-// 2. SISTEM LOGIN & LOGOUT (Versi 2 File / Redirect URL)
+// 2. SISTEM LOGIN & LOGOUT (Multi-Dashboard: RSUD & PKM)
 // ========================================================
 // Mengawasi Perubahan Status User
 auth.onAuthStateChanged((user) => {
-  // Mengecek apakah URL saat ini adalah halaman dashboard
-  const isDashboardPage = window.location.pathname.includes("dashboard.html");
+  const currentPath = window.location.pathname;
+  const isRsudPage = currentPath.includes("dashboard-rsud.html");
+  const isPkmPage = currentPath.includes("dashboard-pkm.html");
+  
   const namaUser = document.getElementById("namaUser");
 
   if (user) {
+    // A. JIKA USER SUDAH LOGIN
     currentUser = user;
-    // Menggunakan Cloud Firestore: Koleksi "evaluasi_kinerja", Dokumen = UID User
-    formRef = db.collection("evaluasi_kinerja").doc(user.uid);
-    console.log("User terhubung:", user.email);
     
-    // Tampilkan nama user (menghilangkan @gmail.com)
+    // Memotong "@gmail.com" untuk mendapatkan username asli (misal: "rsud_melati")
+    const usernameAsli = user.email.replace("@gmail.com", "");
+    
     if (namaUser) {
-        namaUser.innerText = user.email.replace("@gmail.com", "");
+      namaUser.innerText = usernameAsli;
     }
 
-    if (isDashboardPage) {
-        // Jika sudah di dashboard, tarik data otomatis dari database
+    // --- LOGIKA PENENTUAN ARAH DASHBOARD BERDASARKAN PREFIX ---
+    if (usernameAsli.startsWith("rsud_")) {
+      
+      // 1. Jika User adalah RSUD
+      formRef = db.collection("evaluasi_kinerja_rsud").doc(user.uid);
+      if (isRsudPage) {
         muatDataDariFirebase();
+      } else {
+        window.location.href = "dashboard-rsud.html"; // Lempar ke halaman RSUD
+      }
+
+    } else if (usernameAsli.startsWith("pkm_")) {
+      
+      // 2. Jika User adalah Puskesmas
+      formRef = db.collection("evaluasi_kinerja_pkm").doc(user.uid);
+      if (isPkmPage) {
+        muatDataDariFirebase();
+      } else {
+        window.location.href = "dashboard-pkm.html"; // Lempar ke halaman PKM
+      }
+
     } else {
-        // Jika user buka index.html tapi SUDAH login, langsung lempar ke dashboard
-        window.location.href = "dashboard.html";
+      // 3. Jika username tidak memiliki awalan yang benar
+      alert("Akses Ditolak: Kategori pengguna tidak dikenali (Harus rsud_ atau pkm_).");
+      auth.signOut();
     }
 
   } else {
+    // B. JIKA USER BELUM LOGIN / SUDAH LOGOUT
     currentUser = null;
     formRef = null;
     
-    if (isDashboardPage) {
-        // Jika user buka dashboard.html tapi BELUM login, langsung lempar ke index.html
-        window.location.href = "index.html";
+    // Jika user yang belum login mencoba membuka salah satu dashboard, tendang ke login
+    if (isRsudPage || isPkmPage) {
+      window.location.href = "index.html";
     }
   }
 });
