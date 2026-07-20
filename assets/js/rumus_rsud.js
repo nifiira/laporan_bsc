@@ -366,6 +366,7 @@ const aturanPenilaian = {
   },
   "311_D": {
     kondisiSkor: [
+      { batas: 0, nilai: 0 }, // Jika Nilai 0
       { batas: 14.9999, nilai: 1.0 }, // Mewakili < 15
       { batas: 19.9999, nilai: 0.8 }, // Mewakili < 20
       { batas: 29.9999, nilai: 0.6 }, // Mewakili < 30
@@ -382,6 +383,7 @@ const aturanPenilaian = {
   },
   "311_F": {
     kondisiSkor: [
+      { batas: 0, nilai: 0 }, // Jika Nilai 0
       { batas: 3, nilai: 1.0 }, // Mewakili <= 3
       { batas: 4, nilai: 0.8 }, // Mewakili <= 4
       { batas: 5, nilai: 0.6 }, // Mewakili <= 5
@@ -390,6 +392,7 @@ const aturanPenilaian = {
   },
   "311_G": {
     kondisiSkor: [
+      { batas: 0, nilai: 0 }, // Jika Nilai 0
       { batas: 3, nilai: 1.0 }, // Mewakili <= 3
       { batas: 4, nilai: 0.8 }, // Mewakili <= 4
       { batas: 5, nilai: 0.6 }, // Mewakili <= 5

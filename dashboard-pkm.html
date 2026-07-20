@@ -17,6 +17,28 @@
       <div class="header">
         <h2>Sistem Penilaian Kinerja BLUD PUSKESMAS</h2>
         <p>Format Evaluasi Mandiri Otomatis</p>
+        <div
+          style="
+            margin-top: 15px;
+            font-weight: bold;
+            background: #eff6ff;
+            padding: 10px;
+            border-radius: 6px;
+            display: inline-block;
+          "
+        >
+          <label for="pilihTribulan">Pilih Periode Laporan: </label>
+          <select
+            id="pilihTribulan"
+            onchange="gantiTribulan()"
+            style="padding: 5px; font-weight: bold"
+          >
+            <option value="TW1-2026">Triwulan 1 (2026)</option>
+            <option value="TW2-2026">Triwulan 2 (2026)</option>
+            <option value="TW3-2026">Triwulan 3 (2026)</option>
+            <option value="TW4-2026">Triwulan 4 (2026)</option>
+          </select>
+        </div>
       </div>
 
       <!-- Point 1 -->

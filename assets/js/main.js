@@ -1,8 +1,7 @@
 // ========================================================
 // 1. CONFIG & INITIALIZATION FIREBASE (CLOUD FIRESTORE)
 // ========================================================
-// GANTI BAGIAN INI DENGAN CONFIG DARI FIREBASE CONSOLE ANDA
- const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyAGoWJ5UfF1lyQAhEiR06f6Qm_uDc_Xo0w",
     authDomain: "lap-bsc.firebaseapp.com",
     projectId: "lap-bsc",
@@ -10,9 +9,9 @@
     messagingSenderId: "1075222206362",
     appId: "1:1075222206362:web:acb8cb5839cd58560b8c23",
     measurementId: "G-3NWWX99KPP"
-  };
+};
 
-// Inisialisasi Firebase (Pastikan script CDN Firebase di HTML sudah terpasang)
+// Inisialisasi Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -20,69 +19,84 @@ const auth = firebase.auth();
 let currentUser = null;
 let formRef = null;
 
+// Variabel Global Baru
+let tribulanAktif = "TW1-2026"; 
+let tipeKoleksi = ""; // Menyimpan jenis database (rsud / pkm)
+
 // ========================================================
 // 2. SISTEM LOGIN & LOGOUT (Multi-Dashboard: RSUD & PKM)
 // ========================================================
-// Mengawasi Perubahan Status User
 auth.onAuthStateChanged((user) => {
   const currentPath = window.location.pathname;
   const isRsudPage = currentPath.includes("dashboard-rsud.html");
   const isPkmPage = currentPath.includes("dashboard-pkm.html");
-  
+  const isAdminPage = currentPath.includes("dashboard-admin.html");
   const namaUser = document.getElementById("namaUser");
 
   if (user) {
-    // A. JIKA USER SUDAH LOGIN
     currentUser = user;
-    
-    // Memotong "@gmail.com" untuk mendapatkan username asli (misal: "rsud_melati")
     const usernameAsli = user.email.replace("@gmail.com", "");
-    
-    if (namaUser) {
-      namaUser.innerText = usernameAsli;
-    }
+    if (namaUser) namaUser.innerText = usernameAsli;
 
-    // --- LOGIKA PENENTUAN ARAH DASHBOARD BERDASARKAN PREFIX ---
-    if (usernameAsli.startsWith("rsud_")) {
+    const selectTribulan = document.getElementById("pilihTribulan");
+    if (selectTribulan) tribulanAktif = selectTribulan.value;
+
+    if (usernameAsli.startsWith("admin")) {
+      if (isAdminPage) {
+        tarikSemuaDataAdmin();
+      } else {
+        window.location.href = "dashboard-admin.html";
+      }
+    } 
+    else if (usernameAsli.startsWith("rsud_")) {
+      tipeKoleksi = "evaluasi_kinerja_rsud";
+      formRef = db.collection(tipeKoleksi).doc(`${user.uid}_${tribulanAktif}`); 
       
-      // 1. Jika User adalah RSUD
-      formRef = db.collection("evaluasi_kinerja_rsud").doc(user.uid);
       if (isRsudPage) {
         muatDataDariFirebase();
       } else {
-        window.location.href = "dashboard-rsud.html"; // Lempar ke halaman RSUD
+        window.location.href = "dashboard-rsud.html";
       }
-
-    } else if (usernameAsli.startsWith("pkm_")) {
+    } 
+    else if (usernameAsli.startsWith("pkm_")) {
+      tipeKoleksi = "evaluasi_kinerja_pkm";
+      formRef = db.collection(tipeKoleksi).doc(`${user.uid}_${tribulanAktif}`);
       
-      // 2. Jika User adalah Puskesmas
-      formRef = db.collection("evaluasi_kinerja_pkm").doc(user.uid);
       if (isPkmPage) {
         muatDataDariFirebase();
       } else {
-        window.location.href = "dashboard-pkm.html"; // Lempar ke halaman PKM
+        window.location.href = "dashboard-pkm.html";
       }
-
-    } else {
-      // 3. Jika username tidak memiliki awalan yang benar
-      alert("Akses Ditolak: Kategori pengguna tidak dikenali (Harus rsud_ atau pkm_).");
+    } 
+    else {
+      alert("Akses Ditolak: Kategori pengguna tidak dikenali.");
       auth.signOut();
     }
-
   } else {
-    // B. JIKA USER BELUM LOGIN / SUDAH LOGOUT
     currentUser = null;
     formRef = null;
-    
-    // Jika user yang belum login mencoba membuka salah satu dashboard, tendang ke login
-    if (isRsudPage || isPkmPage) {
+    if (isRsudPage || isPkmPage || isAdminPage) {
       window.location.href = "index.html";
     }
   }
 });
 
+function gantiTribulan() {
+  const selectTribulan = document.getElementById("pilihTribulan");
+  if (!selectTribulan || !currentUser || !tipeKoleksi) return;
+  
+  tribulanAktif = selectTribulan.value;
+  formRef = db.collection(tipeKoleksi).doc(`${currentUser.uid}_${tribulanAktif}`);
+  
+  document.querySelectorAll('input[type="number"], select').forEach(input => {
+    if(input.id !== "pilihTribulan") input.value = "";
+  });
+  document.querySelectorAll('[id^="skor_"], [id^="subTotal_"]').forEach(el => el.innerText = "0.00");
+  
+  muatDataDariFirebase();
+}
+
 function aksiLogin() {
-  // 1. Ambil nilai input
   const username = document.getElementById("inputEmail").value;
   const password = document.getElementById("inputPassword").value;
 
@@ -91,38 +105,27 @@ function aksiLogin() {
     return;
   }
   
-  // 2. TRIK: Gabungkan username dengan domain palsu
   const dummyEmail = username + "@gmail.com"; 
   
-  // 3. Gunakan dummyEmail untuk proses login ke Firebase
   auth.signInWithEmailAndPassword(dummyEmail, password)
     .then((userCredential) => {
-      // Alert sukses dimodifikasi agar menampilkan username
       alert("Berhasil masuk sebagai " + username);
-      // Pindah halaman otomatis di-handle oleh onAuthStateChanged di atas
     })
     .catch((error) => {
       alert("Login Gagal: " + error.message);
     });
 }
 
-// ========================================================
-// FUNGSI TAMPILKAN / SEMBUNYIKAN PASSWORD
-// ========================================================
 function togglePassword() {
   const input = document.getElementById("inputPassword");
   const icon = document.getElementById("iconPassword");
 
   if (input.type === "password") {
-    // Ubah ke teks agar password terlihat
     input.type = "text";
-    // Ubah ikon mata terbuka menjadi mata tertutup (dicoret)
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
-    // Kembalikan ke password (titik-titik)
     input.type = "password";
-    // Kembalikan ke ikon mata terbuka
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
   }
@@ -131,9 +134,7 @@ function togglePassword() {
 function logoutUser() {
   const konfirmasi = confirm("Apakah Anda yakin ingin keluar?");
   if (konfirmasi) {
-    auth.signOut().then(() => {
-        // Pindah halaman ke index otomatis di-handle oleh onAuthStateChanged
-    });
+    auth.signOut();
   }
 }
 
@@ -150,66 +151,52 @@ function simpanKeFirebase(namaPoin, nilaiRealisasi, nilaiTarget, skorAkhir) {
   }
   dataObjek[`skor_${namaPoin}`] = skorAkhir;
 
-  // { merge: true } mencegah data lain tertimpa/hilang saat mengupdate 1 poin
   formRef.set(dataObjek, { merge: true }).catch((err) => {
     console.error("Gagal menyimpan ke Firestore:", err);
   });
 }
 
-// ========================================================
-// 3b. FUNGSI PEMUATAN CLOUD FIRESTORE
-// ========================================================
 function muatDataDariFirebase() {
   if (!formRef) return;
 
   formRef.get().then((doc) => {
     if (doc.exists) {
       const data = doc.data();
-      let daftarPoinUnik = new Set(); // Menyimpan daftar poin yang perlu dihitung ulang
+      let daftarPoinUnik = new Set(); 
 
-      // 1. Masukkan nilai ke dalam form input/select
       for (const [key, value] of Object.entries(data)) {
         let elemen = document.getElementById(key);
         
-        // Jaga-jaga: Jika form berupa dropdown (select) tapi tersimpan sbg 'real_'
         if (!elemen && key.startsWith("real_")) {
           const poinMurni = key.replace("real_", "");
           elemen = document.getElementById(`select_${poinMurni}`);
         }
 
-        // Tanamkan nilainya ke kotak input
         if (elemen && (elemen.tagName === "INPUT" || elemen.tagName === "SELECT")) {
           elemen.value = value; 
         }
 
-        // 2. Kumpulkan kode poin untuk dihitung ulang (Contoh: "real_111_A" -> "111_A")
         let namaPoin = "";
         if (key.startsWith("real_")) namaPoin = key.replace("real_", "");
         else if (key.startsWith("target_")) namaPoin = key.replace("target_", "");
         else if (key.startsWith("select_")) namaPoin = key.replace("select_", "");
         
-        // Masukkan ke daftar jika valid dan bukan merupakan '_Total'
         if (namaPoin && !namaPoin.includes("_Total")) {
           daftarPoinUnik.add(namaPoin);
         }
       }
 
-      // 3. JALANKAN ULANG SEMUA RUMUS BERDASARKAN INPUT YANG BARU MASUK
-      // Ini bertindak seolah-olah user baru saja mengetik ulang angkanya secara kilat,
-      // sehingga semua subTotal, Total 1.1.1, dan Grand Total dijamin muncul.
       daftarPoinUnik.forEach(poin => {
         if (typeof hitungSkorOtomatis === 'function') {
           hitungSkorOtomatis(poin);
         }
       });
 
-      // 4. Hitung ulang total utama (pengaman tambahan agar semua sinkron)
       if (typeof hitungTotalPoin11 === 'function') hitungTotalPoin11();
       if (typeof hitungTotalPoin21 === 'function') hitungTotalPoin21();
       if (typeof hitungTotalPoin31 === 'function') hitungTotalPoin31();
       if (typeof hitungTotalPoin41 === 'function') hitungTotalPoin41();
       if (typeof hitungGrandTotal === 'function') hitungGrandTotal();
-
     }
   }).catch((error) => {
     console.error("Gagal memuat data dari Firebase: ", error);
@@ -227,7 +214,6 @@ function ambilAngkaSaja(idElement) {
   if (teks.includes(':')) {
     teks = teks.split(':').pop().trim();
   }
-  
   return parseFloat(teks) || 0;
 }
 
@@ -244,7 +230,6 @@ function hitungSkorOtomatis(namaPoin) {
     if (elSubTotal) elSubTotal.innerText = skorPilihan.toFixed(2);
     
     cekDanHitungTotalKelompok(namaPoin);
-    // OTOMATIS SIMPAN DATA KE FIREBASE
     simpanKeFirebase(namaPoin, skorPilihan, null, skorPilihan);
     return; 
   }
@@ -252,7 +237,6 @@ function hitungSkorOtomatis(namaPoin) {
   const elReal = document.getElementById(`real_${namaPoin}`);
   if (!elReal) return; 
   
-  // PENGAMAN KOSONG
   if (elReal.value.trim() === "") {
     elSkor.innerText = "Salah";
     if (elSubTotal) elSubTotal.innerText = "Salah";
@@ -305,7 +289,6 @@ function hitungSkorOtomatis(namaPoin) {
 
   cekDanHitungTotalKelompok(namaPoin);
   
-  // OTOMATIS SIMPAN DATA KE FIREBASE
   const nilaiTarget = elTarget ? parseFloat(elTarget.value.replace(',', '.')) || 0 : null;
   simpanKeFirebase(namaPoin, realisasi, nilaiTarget, skorFinal);
 }
@@ -334,14 +317,13 @@ function cekDanHitungTotalKelompok(namaPoin) {
 }
 
 // ========================================================
-// 5. TOTAL LEVEL 3
+// 5. TOTAL LEVEL 3 & 6. PENJUMLAHAN AKUMULASI UTAMA
 // ========================================================
 function hitungTotalPoinH() {
   const totalH = ambilAngkaSaja('skor_111_H1') + ambilAngkaSaja('skor_111_H2') + ambilAngkaSaja('skor_111_H3');
   const elTotalH = document.getElementById('skor_111_H_Total');
   if (elTotalH) elTotalH.innerText = totalH.toFixed(2);
 }
-
 function hitungTotalPoinJ() {
   const totalJ = ambilAngkaSaja('skor_111_J1') + ambilAngkaSaja('skor_111_J2') + 
                  ambilAngkaSaja('skor_111_J3') + ambilAngkaSaja('skor_111_J4') + 
@@ -349,14 +331,12 @@ function hitungTotalPoinJ() {
   const elTotalJ = document.getElementById('skor_111_J_Total');
   if (elTotalJ) elTotalJ.innerText = totalJ.toFixed(2);
 }
-
 function hitungTotalPoin314A() {
   const totalA = ambilAngkaSaja('skor_314_A1') + ambilAngkaSaja('skor_314_A2') + 
                  ambilAngkaSaja('skor_314_A3') + ambilAngkaSaja('skor_314_A4');
   const elTotalA = document.getElementById('skor_314_A_Total');
   if (elTotalA) elTotalA.innerText = totalA.toFixed(2);
 }
-
 function hitungTotalPoin111() {
   const total = ambilAngkaSaja('subTotal_111_A') + ambilAngkaSaja('subTotal_111_B') + 
                 ambilAngkaSaja('subTotal_111_C') + ambilAngkaSaja('subTotal_111_D') + 
@@ -366,7 +346,6 @@ function hitungTotalPoin111() {
   const el = document.getElementById('skor_111_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin211() {
   const total = ambilAngkaSaja('subTotal_211_A') + ambilAngkaSaja('subTotal_211_B') + 
                 ambilAngkaSaja('subTotal_211_C') + ambilAngkaSaja('subTotal_211_D') + 
@@ -375,7 +354,6 @@ function hitungTotalPoin211() {
   const el = document.getElementById('skor_211_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin212() {
   const total = ambilAngkaSaja('subTotal_212_A') + ambilAngkaSaja('subTotal_212_B') + 
                 ambilAngkaSaja('subTotal_212_C') + ambilAngkaSaja('subTotal_212_D') + 
@@ -385,7 +363,6 @@ function hitungTotalPoin212() {
   const el = document.getElementById('skor_212_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin311() {
   const total = ambilAngkaSaja('subTotal_311_A') + ambilAngkaSaja('subTotal_311_B') + 
                 ambilAngkaSaja('subTotal_311_C') + ambilAngkaSaja('subTotal_311_D') + 
@@ -398,7 +375,6 @@ function hitungTotalPoin311() {
   const el = document.getElementById('skor_311_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin312() {
   const total = ambilAngkaSaja('subTotal_312_A') + ambilAngkaSaja('subTotal_312_B') + 
                 ambilAngkaSaja('subTotal_312_C') + ambilAngkaSaja('subTotal_312_D') + 
@@ -407,7 +383,6 @@ function hitungTotalPoin312() {
   const el = document.getElementById('skor_312_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin313() {
   const total = ambilAngkaSaja('subTotal_313_A') + ambilAngkaSaja('subTotal_313_B') + 
                 ambilAngkaSaja('subTotal_313_C') + ambilAngkaSaja('subTotal_313_D') + 
@@ -415,67 +390,53 @@ function hitungTotalPoin313() {
   const el = document.getElementById('skor_313_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin314() {
   const skor314Total = ambilAngkaSaja('skor_314_A_Total');
   const el = document.getElementById('skor_314_Total');
   if (el) el.innerText = skor314Total.toFixed(2);
 }
-
 function hitungTotalPoin315() {
   const skor315Total = ambilAngkaSaja('subTotal_315_A');
   const el = document.getElementById('skor_315_Total');
   if (el) el.innerText = skor315Total.toFixed(2);
 }
-
 function hitungTotalPoin411() {
   const total = ambilAngkaSaja('subTotal_411_A') + ambilAngkaSaja('subTotal_411_B') + 
                 ambilAngkaSaja('subTotal_411_C') + ambilAngkaSaja('subTotal_411_D') + ambilAngkaSaja('subTotal_411_E');
   const el = document.getElementById('skor_411_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin412() {
   const total = ambilAngkaSaja('subTotal_412_A') + ambilAngkaSaja('subTotal_412_B');
   const el = document.getElementById('skor_412_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin413() {
   const total = ambilAngkaSaja('subTotal_413_A') + ambilAngkaSaja('subTotal_413_B');
   const el = document.getElementById('skor_413_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
 function hitungTotalPoin414() {
   const total = ambilAngkaSaja('subTotal_414_A') + ambilAngkaSaja('subTotal_414_B');
   const el = document.getElementById('skor_414_Total');
   if (el) el.innerText = total.toFixed(2);
 }
-
-
-// ========================================================
-// 6. PENJUMLAHAN AKUMULASI UTAMA (LEVEL 2)
-// ========================================================
 function hitungTotalPoin11() {
   const skor11 = ambilAngkaSaja('skor_111_Total');
   const el = document.getElementById('skor_11_Total');
   if (el) el.innerText = skor11.toFixed(2);
 }
-
 function hitungTotalPoin21() {
   const total21 = ambilAngkaSaja('skor_211_Total') + ambilAngkaSaja('skor_212_Total');
   const el = document.getElementById('skor_21_Total');
   if (el) el.innerText = total21.toFixed(2);
 }
-
 function hitungTotalPoin31() {
   const total31 = ambilAngkaSaja('skor_311_Total') + ambilAngkaSaja('skor_312_Total') + 
                   ambilAngkaSaja('skor_313_Total') + ambilAngkaSaja('skor_314_Total') + ambilAngkaSaja('skor_315_Total');
   const el = document.getElementById('skor_31_Total');
   if (el) el.innerText = total31.toFixed(2);
 }
-
 function hitungTotalPoin41() {
   const total41 = ambilAngkaSaja('skor_411_Total') + ambilAngkaSaja('skor_412_Total') + 
                   ambilAngkaSaja('skor_413_Total') + ambilAngkaSaja('skor_414_Total'); 
@@ -484,7 +445,7 @@ function hitungTotalPoin41() {
 }
 
 // ========================================================
-// 7. FUNGSI GRAND TOTAL RSUD
+// 7. FUNGSI GRAND TOTAL & "SAPU JAGAT" DATABASE
 // ========================================================
 function hitungGrandTotal() {
   const total1 = ambilAngkaSaja('skor_11_Total');
@@ -498,7 +459,41 @@ function hitungGrandTotal() {
   if (elGrandTotal) elGrandTotal.innerText = grandTotal.toFixed(2);
 
   const elPredikat = document.getElementById('predikatGrandTotal');
-  if (elPredikat) elPredikat.innerText = tentukanPredikat(grandTotal);
+  let predikatHasil = "-";
+  
+  if (elPredikat) {
+    predikatHasil = tentukanPredikat(grandTotal);
+    elPredikat.innerText = predikatHasil;
+  }
+
+  // === FITUR SAPU JAGAT: REKAM SELURUH NILAI DI LAYAR KE FIREBASE ===
+  if (currentUser && formRef) {
+    const usernameAsli = currentUser.email.replace("@gmail.com", "");
+    const namaLengkapInstansi = formatNamaInstansi(usernameAsli);
+
+    let dataLengkap = {
+        nama_instansi: namaLengkapInstansi,
+        grand_total: grandTotal.toFixed(2),
+        predikat: predikatHasil
+    };
+
+    // Ambil SEMUA elemen berawalan skor_, subTotal_, real_, dan target_
+    const semuaElemen = document.querySelectorAll('[id^="skor_"], [id^="subTotal_"], [id^="real_"], [id^="target_"]');
+    
+    semuaElemen.forEach(el => {
+        let nilai = 0;
+        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+            nilai = parseFloat(el.value.replace(',', '.')) || 0;
+        } else {
+            nilai = parseFloat(el.innerText.replace(',', '.')) || 0;
+        }
+        dataLengkap[el.id] = nilai; 
+    });
+
+    formRef.set(dataLengkap, { merge: true }).catch((err) => {
+        console.error("Gagal menyimpan rekap laporan ke Firestore:", err);
+    });
+  }
 }
 
 function tentukanPredikat(skor) {
@@ -510,14 +505,23 @@ function tentukanPredikat(skor) {
 }
 
 // ========================================================
-// 8. FUNGSI EXPORT (EXCEL) & RESET DATA
+// 8. FUNGSI EXPORT (EXCEL) 2-IN-1 & RESET
 // ========================================================
-async function exportToExcel() {
+async function exportToExcel(namaKoleksi = null, docId = null, namaInstansi = null, triwulan = null) {
   try {
     alert("Sedang mengambil template dan menyuntikkan data... Mohon tunggu.");
+    let dataAdmin = null;
+
+    if (namaKoleksi && docId) {
+        const doc = await db.collection(namaKoleksi).doc(docId).get();
+        if (doc.exists) {
+            dataAdmin = doc.data();
+        } else {
+            throw new Error("Data instansi tidak ditemukan di database.");
+        }
+    }
 
     const response = await fetch('assets/template/template_excel.xlsx');
-    
     if (!response.ok) {
       throw new Error("Gagal memuat template. Pastikan file berada di 'assets/template/template_excel.xlsx'");
     }
@@ -531,7 +535,27 @@ async function exportToExcel() {
       row.eachCell((cell, colNumber) => {
         if (typeof cell.value === 'string' && cell.value.startsWith('$')) {
           const idTarget = cell.value.substring(1); 
-          const nilaiAkhir = ambilAngkaSaja(idTarget);
+          let nilaiAkhir = 0;
+          
+          if (dataAdmin) {
+             let nilaiDariDatabase = dataAdmin[idTarget];
+             
+             if (nilaiDariDatabase !== undefined) {
+                nilaiAkhir = isNaN(parseFloat(nilaiDariDatabase)) ? nilaiDariDatabase : parseFloat(nilaiDariDatabase);
+             } else {
+                // KECERDASAN TERJEMAHAN: Jika Excel minta subTotal_ tapi di DB cuma ada skor_
+                if (idTarget.startsWith('subTotal_')) {
+                    const skorAsli = idTarget.replace('subTotal_', 'skor_');
+                    nilaiAkhir = parseFloat(dataAdmin[skorAsli]) || 0;
+                } else {
+                    console.warn(`[DEBUG] Variabel "${idTarget}" tidak ditemukan di database Firebase!`);
+                    nilaiAkhir = 0;
+                }
+             }
+          } else {
+             // User: Baca layar
+             nilaiAkhir = ambilAngkaSaja(idTarget);
+          }
           cell.value = nilaiAkhir; 
         }
       });
@@ -543,7 +567,14 @@ async function exportToExcel() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = "Laporan_Kinerja_RSUD_Otomatis.xlsx";
+    
+    if (dataAdmin && namaInstansi && triwulan) {
+        const namaFileBersih = namaInstansi.replace(/\s+/g, '_'); 
+        a.download = `Laporan_${namaFileBersih}_${triwulan}.xlsx`;
+    } else {
+        a.download = "Laporan_Kinerja_Otomatis.xlsx";
+    }
+    
     document.body.appendChild(a);
     a.click();
     
@@ -557,13 +588,11 @@ async function exportToExcel() {
 }
 
 function resetData() {
-  const konfirmasi = confirm("⚠️ PERHATIAN!\n\nApakah Anda yakin ingin MENGHAPUS SEMUA DATA di form ini? Data yang terhapus tidak dapat dikembalikan.");
-  
+  const konfirmasi = confirm("⚠️ PERHATIAN!\n\nApakah Anda yakin ingin MENGHAPUS SEMUA DATA di form ini?");
   if (konfirmasi) {
     if (formRef) {
       formRef.delete().then(() => {
         alert("Semua data berhasil dihapus dari sistem.");
-        // Otomatis diarahkan ulang agar data hilang dari layar
         location.reload(); 
       }).catch((error) => {
         alert("Gagal menghapus data: " + error.message);
@@ -572,4 +601,211 @@ function resetData() {
       location.reload();
     }
   }
+}
+
+function formatNamaInstansi(username) {
+    let tipe = "";
+    let nama = "";
+    
+    if (username.startsWith("pkm_")) {
+        tipe = "Puskesmas ";
+        nama = username.replace("pkm_", "");
+    } else if (username.startsWith("rsud_")) {
+        tipe = "RSUD ";
+        nama = username.replace("rsud_", "");
+    } else {
+        return username;
+    }
+    nama = nama.charAt(0).toUpperCase() + nama.slice(1);
+    return tipe + nama;
+}
+
+// ========================================================
+// 9. FUNGSI KHUSUS DASHBOARD ADMIN
+// ========================================================
+async function tarikSemuaDataAdmin() {
+  const tabelRef = document.getElementById("tabelRekapAdmin");
+  if (!tabelRef) return;
+
+  tabelRef.innerHTML = ""; 
+
+  try {
+    let htmlTabel = "";
+
+    const snapshotRsud = await db.collection("evaluasi_kinerja_rsud").get();
+    snapshotRsud.forEach(doc => {
+      const data = doc.data();
+      const idParts = doc.id.split("_");
+      const triwulan = idParts[1] || "Tidak Diketahui";
+      const nama = data.nama_instansi || "RSUD (Belum Input)";
+      const total = data.grand_total || "0.00";
+      const predikat = data.predikat || "-";
+
+      htmlTabel += `
+        <tr class="rsud-row">
+            <td><strong>${nama}</strong></td>
+            <td>${triwulan}</td>
+            <td><strong>${total}</strong></td>
+            <td>${predikat}</td>
+            <td><button class="btn-aksi" onclick="lihatDetailAdmin('evaluasi_kinerja_rsud', '${doc.id}', '${nama}', '${triwulan}')"><i class="fa-solid fa-eye"></i> Detail</button></td>
+        </tr>
+      `;
+    });
+
+    const snapshotPkm = await db.collection("evaluasi_kinerja_pkm").get();
+    snapshotPkm.forEach(doc => {
+      const data = doc.data();
+      const idParts = doc.id.split("_");
+      const triwulan = idParts[1] || "Tidak Diketahui";
+      const nama = data.nama_instansi || "PKM (Belum Input)";
+      const total = data.grand_total || "0.00";
+      const predikat = data.predikat || "-";
+
+      htmlTabel += `
+        <tr class="pkm-row">
+            <td><strong>${nama}</strong></td>
+            <td>${triwulan}</td>
+            <td><strong>${total}</strong></td>
+            <td>${predikat}</td>
+            <td><button class="btn-aksi" onclick="lihatDetailAdmin('evaluasi_kinerja_pkm', '${doc.id}', '${nama}', '${triwulan}')"><i class="fa-solid fa-eye"></i> Detail</button></td>
+        </tr>
+      `;
+    });
+
+    if (htmlTabel === "") {
+      tabelRef.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada laporan.</td></tr>`;
+    } else {
+      tabelRef.innerHTML = htmlTabel;
+    }
+
+  } catch (error) {
+    console.error("Gagal:", error);
+    tabelRef.innerHTML = `<tr><td colspan="5" style="text-align:center; color:red;">Gagal memuat data.</td></tr>`;
+  }
+}
+
+async function lihatDetailAdmin(namaKoleksi, docId, namaInstansi, triwulan) {
+    document.getElementById("modalDetailAdmin").style.display = "block";
+    document.getElementById("judulModal").innerText = `Detail Nilai: ${namaInstansi} (${triwulan})`;
+    const isiRef = document.getElementById("isiModalDetail");
+    isiRef.innerHTML = "<p>Sedang memuat rincian nilai...</p>";
+
+    try {
+        const doc = await db.collection(namaKoleksi).doc(docId).get();
+        if (doc.exists) {
+            const data = doc.data();
+            
+           let htmlKonten = `
+    <div style="margin-bottom: 15px;">
+        <button class="btn-excel" style="background-color: #059669; padding: 8px 12px; font-size: 14px;" 
+                onclick="exportToExcel('${namaKoleksi}', '${docId}', '${namaInstansi}', '${triwulan}')">
+            <i class="fa-solid fa-file-excel"></i> Cetak Laporan ${namaInstansi} Sesuai Template
+        </button>
+    </div>
+`;
+            htmlKonten += `<table class="admin-table"><tr><th>Nama Poin / Indikator</th><th>Skor Didapat</th></tr>`;
+            
+            const keys = Object.keys(data)
+                               .filter(k => k.startsWith('skor_') || k.startsWith('subTotal_') || k.startsWith('real_') || k.startsWith('target_'))
+                               .sort();
+            
+            keys.forEach(k => {
+                htmlKonten += `<tr><td>${k}</td><td><strong>${data[k]}</strong></td></tr>`;
+            });
+            htmlKonten += `</table>`;
+            
+            isiRef.innerHTML = htmlKonten;
+        }
+    } catch (error) {
+        isiRef.innerHTML = `<p style="color:red;">Gagal menarik rincian data: ${error.message}</p>`;
+    }
+}
+
+function tutupModalAdmin() {
+    document.getElementById("modalDetailAdmin").style.display = "none";
+}
+
+async function exportExcelAdmin() {
+    try {
+        alert("Sistem sedang mengumpulkan seluruh data instansi dan menyusunnya ke dalam Excel. Mohon tunggu beberapa saat...");
+        
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Rekapitulasi Kinerja");
+
+        let semuaData = [];
+        let daftarPoinUnik = new Set(); 
+
+        const snapRsud = await db.collection("evaluasi_kinerja_rsud").get();
+        snapRsud.forEach(doc => {
+            let data = doc.data();
+            data.idDokumen = doc.id;
+            semuaData.push(data);
+            Object.keys(data).forEach(k => {
+                if (k.startsWith('skor_') || k.startsWith('subTotal_')) daftarPoinUnik.add(k);
+            });
+        });
+
+        const snapPkm = await db.collection("evaluasi_kinerja_pkm").get();
+        snapPkm.forEach(doc => {
+            let data = doc.data();
+            data.idDokumen = doc.id;
+            semuaData.push(data);
+            Object.keys(data).forEach(k => {
+                if (k.startsWith('skor_') || k.startsWith('subTotal_')) daftarPoinUnik.add(k);
+            });
+        });
+
+        if (semuaData.length === 0) {
+            alert("Belum ada data dari instansi manapun untuk dicetak.");
+            return;
+        }
+
+        const kolomDasar = [
+            { header: 'Nama Instansi', key: 'nama', width: 30 },
+            { header: 'Periode/TW', key: 'tw', width: 15 },
+            { header: 'Grand Total', key: 'gt', width: 15 },
+            { header: 'Predikat', key: 'predikat', width: 20 }
+        ];
+
+        const poinUrut = Array.from(daftarPoinUnik).sort();
+        poinUrut.forEach(poin => {
+            kolomDasar.push({ header: poin, key: poin, width: 15 });
+        });
+        worksheet.columns = kolomDasar;
+        
+        worksheet.getRow(1).font = { bold: true, color: { argb: 'FFFFFFFF' } };
+        worksheet.getRow(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1E3A8A' } };
+
+        semuaData.forEach(d => {
+            const tw = d.idDokumen ? d.idDokumen.split('_')[1] : "-";
+            let barisData = {
+                nama: d.nama_instansi || "Instansi",
+                tw: tw,
+                gt: d.grand_total || "0",
+                predikat: d.predikat || "-"
+            };
+            
+            poinUrut.forEach(poin => {
+                barisData[poin] = d[poin] !== undefined ? d[poin] : "0";
+            });
+
+            worksheet.addRow(barisData);
+        });
+
+        const buffer = await workbook.xlsx.writeBuffer();
+        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "Rekapitulasi_Lengkap_Dinkes.xlsx";
+        document.body.appendChild(a);
+        a.click();
+        
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+    } catch (error) {
+        console.error("Gagal export admin Excel:", error);
+        alert("Terjadi kesalahan saat membuat file Excel: " + error.message);
+    }
 }
